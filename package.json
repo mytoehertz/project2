@@ -20,6 +20,7 @@
     "swagger-ui-express": "^4.0.2"
   },
   "devDependencies": {
-    "express-swagger-generator": "^1.1.14"
+    "express-swagger-generator": "^1.1.14",
+    "typescript": "^3.4.5"
   }
 }

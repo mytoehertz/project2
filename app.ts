@@ -8,9 +8,8 @@ var hbs = require('hbs');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
 var studentRouter = require('./routes/students');
-
+var counselorRouter = require('./routes/counselors');
 
 var app = express();
 
@@ -30,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/students', studentRouter);
-
+app.use('/counselors',counselorRouter);
 
 //SWAGGER
 //https://github.com/pgroot/express-swagger-generator
