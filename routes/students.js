@@ -19,5 +19,24 @@ router.get('/', function (req, res, next) {
         });
     }
 });
+
+router.post('/signup', function (req, res, next) {
+    try {
+        res.status(200)
+            .send({
+            message: 'Yeah baby! Sign up for me',
+            status: res.status,
+            resource: "YES!!!"
+        });
+    }
+    catch (e) {
+        res.status(500)
+            .send({
+            message: 'failed',
+            status: res.status,
+            resource: "Server Error"
+        });
+    }
+});
 module.exports = router;
 //# sourceMappingURL=students.js.map
