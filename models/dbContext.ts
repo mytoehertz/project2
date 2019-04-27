@@ -1,15 +1,12 @@
-import {Sequelize, SequelizeOptions} from "sequelize-typescript";
-import {Student} from "./Student";
+import { Sequelize, SequelizeOptions } from "sequelize-typescript";
+import { Student } from "./Student";
 
-
-class options implements SequelizeOptions {
-
-}
+class options implements SequelizeOptions {}
 
 let dbConnectionOptions = new options();
 
-
 export class DbContext {
+
     Context: Sequelize;
 
     constructor() {
@@ -24,7 +21,7 @@ export class DbContext {
         this.Context.addModels([Student]);
 
     }
-}
 
+}
 
 export default DbContext;
