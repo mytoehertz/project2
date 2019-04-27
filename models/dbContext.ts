@@ -14,7 +14,7 @@ export class DbContext {
 
     constructor() {
         this.Context = new Sequelize({
-            database: 'burgers_db',
+            database: 'fleshEaters',
             dialect: 'mysql',
             username: 'root',
             password: '-----'

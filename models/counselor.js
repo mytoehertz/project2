@@ -26,6 +26,12 @@ __decorate([
     __metadata("design:type", String)
 ], Counselor.prototype, "LastName", void 0);
 __decorate([
+    sequelize_typescript_1.Length({ min: 1, max: 100 }),
+    sequelize_typescript_1.AllowNull(false),
+    sequelize_typescript_1.Column,
+    __metadata("design:type", String)
+], Counselor.prototype, "Credentials", void 0);
+__decorate([
     sequelize_typescript_1.AllowNull(false),
     sequelize_typescript_1.Column,
     __metadata("design:type", Date)

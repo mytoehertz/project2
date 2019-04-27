@@ -27,6 +27,11 @@ export class Counselor extends Model<Counselor> {
     @Column
     LastName: string;
 
+    @Length({min: 1, max: 100})
+    @AllowNull(false)
+    @Column
+    Credentials: string;
+    
     @AllowNull(false)
     @Column
     JoinDate: Date;

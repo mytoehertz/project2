@@ -8,7 +8,7 @@ let dbConnectionOptions = new options();
 class DbContext {
     constructor() {
         this.Context = new sequelize_typescript_1.Sequelize({
-            database: 'burgers_db',
+            database: 'fleshEaters',
             dialect: 'mysql',
             username: 'root',
             password: '-----'
