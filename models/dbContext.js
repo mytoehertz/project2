@@ -8,10 +8,10 @@ let dbConnectionOptions = new options();
 class DbContext {
     constructor() {
         this.Context = new sequelize_typescript_1.Sequelize({
-            database: 'burgers_db',
-            dialect: 'mysql',
-            username: 'root',
-            password: '-----'
+            database: "burgers_db",
+            dialect: "mysql",
+            username: "root",
+            password: "-----"
             //storage: ':memory:',
             //modelPaths: [__dirname + '/models']
         });
