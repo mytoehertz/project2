@@ -1,31 +1,22 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const OGSequelize = require("sequelize");
-
-import { Sequelize } from "sequelize-typescript";
-
+const sequelize_typescript_1 = require("sequelize-typescript");
 // const Sequelize = tsSequelize.Sequelize();
 //establish the student model
 // var studentModel = require("../models/student");
-
-import { Student } from "../models/student";
-
-console.log(typeof Student, Student);
-
+const student_1 = require("../models/student");
+console.log(typeof student_1.Student, student_1.Student);
 //connecting to the database
-
-const sequelize = new Sequelize("fleshEaters", "root", "Shmaavmc1", {
-  host: "localhost",
-  dialect: "mysql" /* one of 'mysql' | 'mariadb' | 'postgres' | 'mssql' */
+const sequelize = new sequelize_typescript_1.Sequelize("fleshEaters", "root", "Shmaavmc1", {
+    host: "localhost",
+    dialect: "mysql" /* one of 'mysql' | 'mariadb' | 'postgres' | 'mssql' */
 });
-
-sequelize.addModels([Student]);
-
+sequelize.addModels([student_1.Student]);
 // console.log(sequelize);
-
 //
-
 //adding the student model for testing:
 //making sure connection works:
-
 // sequelize
 //   .authenticate()
 //   .then(() => {
@@ -34,22 +25,17 @@ sequelize.addModels([Student]);
 //   .catch(err => {
 //     console.error("Unable to connect to the database:", err);
 //   });
-
 // // studentModel.create({ FirstName: "bob", LastName: "smith" });
-
-Student.sync({ force: true }).then(function(thing) {
-  console.log("We managed to sync Students");
-  const newStudent = new Student({
-    FirstName: "bob",
-    LastName: "smith",
-    Email: "hello@testing.com"
-  });
-
-  console.log(newStudent);
-
-  newStudent.save();
+student_1.Student.sync({ force: true }).then(function (thing) {
+    console.log("We managed to sync Students");
+    const newStudent = new student_1.Student({
+        FirstName: "bob",
+        LastName: "smith",
+        Email: "hello@testing.com"
+    });
+    console.log(newStudent);
+    newStudent.save();
 });
-
 // const Student = sequelize.define(
 //   "students",
 //   {
@@ -71,7 +57,6 @@ Student.sync({ force: true }).then(function(thing) {
 //     // options
 //   }
 // );
-
 // const Counselor = sequelize.define(
 //   "counselors",
 //   {
@@ -93,7 +78,6 @@ Student.sync({ force: true }).then(function(thing) {
 //     // options
 //   }
 // );
-
 // const Conversation = sequelize.define(
 //   "conversations",
 //   {
@@ -115,12 +99,9 @@ Student.sync({ force: true }).then(function(thing) {
 //     // options
 //   }
 // );
-
 //create a test student
-
 // Student.sync({ force: true }).then(function(thing) {
 //   console.log("We managed to sync Students");
-
 //   Student.create({
 //     username: "Michael",
 //     user_email: "Michael@here",
@@ -129,12 +110,9 @@ Student.sync({ force: true }).then(function(thing) {
 //     console.log("Created a student");
 //   });
 // });
-
 //creating a test counselor
-
 // Counselor.sync({ force: true }).then(function(thing) {
 //   console.log("We managed to sync with Counselors");
-
 //   Counselor.create({
 //     username: "Juan",
 //     user_email: "Juan@here",
@@ -143,12 +121,9 @@ Student.sync({ force: true }).then(function(thing) {
 //     console.log("Created a counselor");
 //   });
 // });
-
 //creating a test conversation
-
 // Conversation.sync({ force: true }).then(function(thing) {
 //   console.log("We managed to sync with Conversations");
-
 //   Conversation.create({
 //     student_name: "Michael",
 //     counselor_name: "Juan",
@@ -157,9 +132,9 @@ Student.sync({ force: true }).then(function(thing) {
 //     console.log("Created a conversation");
 //   });
 // });
-
 // module.exports = {
 //   Sequelize: Sequelize,
 //   sequelize: sequelize,
 //   Burger: Burger
 // };
+//# sourceMappingURL=connections.js.map
