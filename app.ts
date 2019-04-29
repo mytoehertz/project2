@@ -35,6 +35,8 @@ app.use("/counselors", counselorRouter);
 
 // const expressSwagger = require('express-swagger-generator')(app);
 
+//Currently breaking the app!
+
 // let options = {
 //     swaggerDefinition: {
 //         info: {

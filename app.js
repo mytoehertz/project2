@@ -27,6 +27,7 @@ app.use("/counselors", counselorRouter);
 //SWAGGER
 //https://github.com/pgroot/express-swagger-generator
 // const expressSwagger = require('express-swagger-generator')(app);
+//Currently breaking the app!
 // let options = {
 //     swaggerDefinition: {
 //         info: {
