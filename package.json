@@ -15,6 +15,7 @@
     "http-errors": "~1.6.2",
     "morgan": "~1.9.0",
     "mysql2": "^1.6.5",
+    "path": "^0.12.7",
     "reflect-metadata": "^0.1.13",
     "sequelize": "^5.7.5",
     "sequelize-typescript": "^1.0.0-alpha.9",
