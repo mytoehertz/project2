@@ -1,22 +1,26 @@
-var express = require("express");
-var path = require("path");
+var express = require('express');
 var router = express.Router();
 /* GET home page. */
-router.get("/", function (req, res, next) {
-    console.log("Registering the get request");
-    var randomNumber = Math.random() * 2;
-    console.log(randomNumber);
-    if (randomNumber > 1) {
-        res.render("signup", { title: "Express" });
+router.get('/', function (req, res, next) {
+    try {
+        res.status(200)
+            .send({
+            message: 'success',
+            status: res.status,
+            resource: "YES!!!"
+        });
     }
-    else {
-        res.render("index", { title: "Express" });
-        // res.sendFile(path.join(__dirname, "../public", "category.html"));
-        //
+    catch (e) {
+        res.status(500)
+            .send({
+            message: 'failed',
+            status: res.status,
+            resource: "Server Error"
+        });
     }
 });
 module.exports = router;
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=chat.js.map
 
 // index route
 app.get('/pages', async (req, res) => {

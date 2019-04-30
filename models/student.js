@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var _a;
 const sequelize_typescript_1 = require("sequelize-typescript");
 //import {IBurger} from "./NewBurgerViewModel";
 let Student = class Student extends sequelize_typescript_1.Model {
@@ -27,6 +28,8 @@ __decorate([
 ], Student.prototype, "LastName", void 0);
 __decorate([
     sequelize_typescript_1.AllowNull(false),
+
+
     sequelize_typescript_1.IsEmail,
     sequelize_typescript_1.Column,
     __metadata("design:type", String)
