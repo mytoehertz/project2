@@ -10,34 +10,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_typescript_1 = require("sequelize-typescript");
-const Conversation_1 = require("./Conversation");
-//import {IBurger} from "./NewBurgerViewModel";
-let Student = class Student extends sequelize_typescript_1.Model {
+let MessageSender = class MessageSender extends sequelize_typescript_1.Model {
 };
 __decorate([
-    sequelize_typescript_1.Length({ min: 1, max: 100 }),
+    sequelize_typescript_1.Length({ min: 1, max: 45 }),
     sequelize_typescript_1.AllowNull(false),
     sequelize_typescript_1.Column,
     __metadata("design:type", String)
-], Student.prototype, "UserName", void 0);
-__decorate([
-    sequelize_typescript_1.AllowNull(false),
-    sequelize_typescript_1.Column,
-    __metadata("design:type", Date)
-], Student.prototype, "JoinDate", void 0);
-__decorate([
-    sequelize_typescript_1.AllowNull(false),
-    sequelize_typescript_1.IsEmail,
-    sequelize_typescript_1.Column,
-    __metadata("design:type", String)
-], Student.prototype, "Email", void 0);
-__decorate([
-    sequelize_typescript_1.HasMany(() => Conversation_1.Conversation),
-    __metadata("design:type", Array)
-], Student.prototype, "Conversation", void 0);
-Student = __decorate([
+], MessageSender.prototype, "Message_Sender", void 0);
+MessageSender = __decorate([
     sequelize_typescript_1.Table
-], Student);
-exports.Student = Student;
-exports.default = Student;
-//# sourceMappingURL=student.js.map
+], MessageSender);
+exports.MessageSender = MessageSender;
+//# sourceMappingURL=messageSender.js.map

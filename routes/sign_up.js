@@ -1,7 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var Counselor = require("../models/counselor.js");
-var Student = require("../models/students.js");
 /* GET home page. */
 router.get('/', function (req, res, next) {
     try {
@@ -22,6 +20,7 @@ router.get('/', function (req, res, next) {
     }
 });
 module.exports = router;
+
 
 // Add a student
 app.post("/", function(req, res) {
@@ -82,3 +81,4 @@ app.post("/", function(req, res) {
 // //  });
 
 //  app.listen(PORT, () => console.log(`APP listening on port ${PORT}`));
+

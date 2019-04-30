@@ -20,6 +20,7 @@ router.get('/', function (req, res, next) {
     }
 });
 module.exports = router;
+
 //# sourceMappingURL=chat.js.map
 
 // // index route
@@ -50,3 +51,4 @@ module.exports = router;
 // //  });
 
 //  app.listen(PORT, () => console.log(`APP listening on port ${PORT}`));
+
