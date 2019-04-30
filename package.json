@@ -10,14 +10,17 @@
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "~4.16.0",
+    "express-handlebars": "^3.0.2",
     "hbs": "~4.0.1",
     "http-errors": "~1.6.2",
     "morgan": "~1.9.0",
     "mysql2": "^1.6.5",
+    "path": "^0.12.7",
     "reflect-metadata": "^0.1.13",
     "sequelize": "^5.7.5",
     "sequelize-typescript": "^1.0.0-alpha.9",
-    "swagger-ui-express": "^4.0.2"
+    "swagger-ui-express": "^4.0.2",
+    "typescript": "^3.4.5"
   },
   "devDependencies": {
     "express-swagger-generator": "^1.1.14",

@@ -28,11 +28,8 @@ __decorate([
 ], Student.prototype, "LastName", void 0);
 __decorate([
     sequelize_typescript_1.AllowNull(false),
-    sequelize_typescript_1.Column,
-    __metadata("design:type", typeof (_a = typeof Date !== "undefined" && Date) === "function" ? _a : Object)
-], Student.prototype, "JoinDate", void 0);
-__decorate([
-    sequelize_typescript_1.AllowNull(false),
+
+
     sequelize_typescript_1.IsEmail,
     sequelize_typescript_1.Column,
     __metadata("design:type", String)
@@ -42,4 +39,4 @@ Student = __decorate([
 ], Student);
 exports.Student = Student;
 exports.default = Student;
-//# sourceMappingURL=Student.js.map
+//# sourceMappingURL=student.js.map
