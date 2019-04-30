@@ -9,9 +9,11 @@ router.get("/", function (req, res, next) {
     if (randomNumber > 1) {
         res.render("signup", { title: "Express" });
     }
-    res.render("index", { title: "Express" });
-    // res.sendFile(path.join(__dirname, "../public", "category.html"));
-    //
+    else {
+        res.render("index", { title: "Express" });
+        // res.sendFile(path.join(__dirname, "../public", "category.html"));
+        //
+    }
 });
 module.exports = router;
 //# sourceMappingURL=index.js.map

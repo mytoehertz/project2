@@ -11,11 +11,11 @@ router.get("/", function(req, res, next) {
 
   if (randomNumber > 1) {
     res.render("signup", { title: "Express" });
+  } else {
+    res.render("index", { title: "Express" });
+    // res.sendFile(path.join(__dirname, "../public", "category.html"));
+    //
   }
-
-  res.render("index", { title: "Express" });
-  // res.sendFile(path.join(__dirname, "../public", "category.html"));
-  //
 });
 
 module.exports = router;
