@@ -1,2 +1,230 @@
 {{!-- <h1>{{title}}</h1> --}}
-<p>Welcome to page</p>
+
+<p>{{title}}</p>
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+<div id="topNav" class="navigation">
+    <span id="closebtn" onclick="navToggle()">
+        <span class="line1"></span>
+        <span class="line2"></span>
+        <span class="line3"></span>
+    </span>
+    <div class="logo">
+        <img src="" />
+    </div>
+
+    <ul class="menulist">
+        <li><a class="menuitems" href="#about">ABOUT</a></li>
+        <li><a class="menuitems" href="login.html">LOG OUT</a></li>
+        <li><a class="menuitems" href="#contact">CONTACT</a></li>
+    </ul>
+</div>
+
+<div id="main">
+</div>
+<header><img src="logo.jpg" id="logopic" alt="logo"></header>
+
+<div id="category">
+    <h1 id="cat">What is your issue today?</h1>
+    <div id="btn">
+        <p><button class="w3-btn w3-block w3-whitesmoke"><a href="counselorlist.html">Bully</a></button></p>
+        <p><button class="w3-btn w3-block w3-whitesmoke">Academic</button></p>
+        <p><button class="w3-btn w3-block w3-whitesmoke">Career</button></p>
+        <p><button class="w3-btn w3-block w3-whitesmoke">Drug</button></p>
+        <p><button class="w3-btn w3-block w3-whitesmoke">Life</button></p>
+        <p><button class="w3-btn w3-block w3-whitesmoke">etc</button></p>
+    </div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div id="blank">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+</div>
+<div id="blank2">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+</div>
+
+
+<div id="about">
+    <h1 id>WE MISSED YOU</h1>
+    <p>MISSED is a website helps students those who are afraid of going to the counselors office or students who want to
+        be adviced by teachers or counselors.
+        <br>
+        <br>
+        We have officially cerified teachers and counselors, and they are ready to help students to find their "MISSED"
+        parts.
+        <br>
+        <br>
+        Sign up with your basic information and get an answer of your issue today.
+    </p>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div id="contact">
+    <h1>WE HEAR YOU</h1>
+    <p>TEL: 718)123-1234</p>
+    <p>EMAIL: missedoffice@missed.com</p>
+    <p>Office hour: 9:00am - 5:00pm (Mon - Sat)</p>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br><br><br><br><br><br><br><br><br><br><br>
+
+<footer id="copyrights">
+    _______________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+    <div>
+        <p>All of the copyrights of this website is belong to members of MISSED COMPANY.
+            <br>You are not allowed to edit this website without our permisssion.
+            <br>You may be accused once you break the policy.
+        </p>
+
+    </div>
+
+</footer>
+
+<script>
+    var nav = document.getElementById("topNav");
+    var main = document.getElementById("main");
+    var menu = document.getElementsByClassName("menuitems");
+    var close = document.getElementById("closebtn");
+
+    //default to measure if/else from
+    nav.style.height = "50px";
+    main.style.marginTop = "50px";
+    for (i = 0; i < menu.length; i++) { menu[i].style.marginTop = "100px"; };
+
+    close.addEventListener("click", function () {
+        var menuIcon = close.children;
+        for (i = 0; i < menuIcon.length; i++) {
+            menuIcon[i].classList.toggle("active");
+        }
+    });
+
+    function navToggle() {
+        //to close
+        if (nav.style.height <= "275px") {
+            nav.style.height = "50px";
+            main.style.marginTop = "50px";
+
+            var i = 0;
+            for (i = 0; i < menu.length; i++) {
+                menu[i].style.opacity = "0.0";
+                menu[i].style.marginTop = "100px";
+            };
+            document.body.style.backgroundColor = "rgba(0,0,0,0.0)";
+
+        }
+        //to open
+        else if (nav.style.height <= "50px") {
+            nav.style.height = "275px";
+            main.style.marginTop = "275px";
+            var i = 0;
+            for (i = 0; i < menu.length; i++) {
+                menu[i].style.opacity = "1.0";
+                menu[i].style.marginTop = "0px";
+            };
+            document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+
+        }
+
+    };
+
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function () { scrollFunction() };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("myBtn").style.display = "block";
+        } else {
+            document.getElementById("myBtn").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+</script>
