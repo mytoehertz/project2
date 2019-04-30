@@ -6,10 +6,14 @@ import {
     AllowNull,
     HasMany,
     Length,
+
     Default,
     Sequelize,
-    IsEmail
+    IsEmail, BelongsToMany
 } from 'sequelize-typescript';
+import {Category} from "./Category";
+import {CounselorSkill} from "./CounselorSkills";
+import {Conversation} from "./Conversation";
 
 //import {IBurger} from "./NewBurgerViewModel";
 
@@ -17,21 +21,17 @@ import {
 @Table
 export class Counselor extends Model<Counselor> {
 
-    @Length({min: 1, max: 100})
+    @Length({min: 1, max: 45})
     @AllowNull(false)
     @Column
     FirstName: string;
 
-    @Length({min: 1, max: 100})
+    @Length({min: 1, max: 45})
     @AllowNull(false)
     @Column
     LastName: string;
 
-    @Length({min: 1, max: 100})
-    @AllowNull(false)
-    @Column
-    Credentials: string;
-    
+
     @AllowNull(false)
     @Column
     JoinDate: Date;
@@ -40,6 +40,12 @@ export class Counselor extends Model<Counselor> {
     @IsEmail
     @Column
     Email: string;
+
+    @BelongsToMany(() => Category, () => CounselorSkill)
+    categories: Category[];
+
+    @HasMany(() => Conversation)
+    Conversation: Conversation[];
 
 
 }

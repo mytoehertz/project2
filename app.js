@@ -1,3 +1,9 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const connections_1 = __importDefault(require("./config/connections"));
 var createError = require("http-errors");
 var express = require("express");
 var path = require("path");
@@ -6,9 +12,10 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var hbs = require("hbs");
 var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
+//var usersRouter = require("./routes/users");
 var studentRouter = require("./routes/students");
 var counselorRouter = require("./routes/counselors");
+var sequelize = new connections_1.default();
 var app = express();
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -21,7 +28,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
+//app.use("/users", usersRouter);
 app.use("/students", studentRouter);
 app.use("/counselors", counselorRouter);
 //SWAGGER

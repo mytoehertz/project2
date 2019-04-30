@@ -1,165 +1,31 @@
-const OGSequelize = require("sequelize");
+import {Sequelize} from "sequelize-typescript";
+import Student from "../models/student";
+import Counselor from "../models/Counselor";
+import {CounselorSkill} from "../models/CounselorSkills";
+import {Category} from "../models/Category";
+import {Conversation} from "../models/Conversation";
+import {Message} from "../models/Messages";
+import {MessageSender} from "../models/MessageSender";
 
-import { Sequelize } from "sequelize-typescript";
 
-// const Sequelize = tsSequelize.Sequelize();
-//establish the student model
-// var studentModel = require("../models/student");
 
-import { Student } from "../models/student";
 
-console.log(typeof Student, Student);
+export class SequelizeDb {
+    Context: Sequelize;
 
-//connecting to the database
+    constructor() {
+        this.Context = new Sequelize({
+            database: 'fleshEaters',
+            dialect: 'mysql',
+            username: 'root',
+            password: 'root'
+            //storage: ':memory:',
+            //modelPaths: [__dirname + '/models']
+        });
+        this.Context.addModels([Student, Counselor, CounselorSkill, Category, Conversation, Message, MessageSender]);
+        this.Context.sync();
+    }
+}
 
-const sequelize = new Sequelize("fleshEaters", "root", "Shmaavmc1", {
-  host: "localhost",
-  dialect: "mysql" /* one of 'mysql' | 'mariadb' | 'postgres' | 'mssql' */
-});
 
-sequelize.addModels([Student]);
-
-// console.log(sequelize);
-
-//
-
-//adding the student model for testing:
-//making sure connection works:
-
-// sequelize
-//   .authenticate()
-//   .then(() => {
-//     console.log("Connection has been established successfully.");
-//   })
-//   .catch(err => {
-//     console.error("Unable to connect to the database:", err);
-//   });
-
-// // studentModel.create({ FirstName: "bob", LastName: "smith" });
-
-Student.sync({ force: true }).then(function(thing) {
-  console.log("We managed to sync Students");
-  const newStudent = new Student({
-    FirstName: "bob",
-    LastName: "smith",
-    Email: "hello@testing.com"
-  });
-
-  console.log(newStudent);
-
-  newStudent.save();
-});
-
-// const Student = sequelize.define(
-//   "students",
-//   {
-//     // attributes
-//     username: {
-//       type: Sequelize.STRING,
-//       allowNull: false
-//     },
-//     user_email: {
-//       type: Sequelize.STRING
-//       // allowNull defaults to true
-//     },
-//     has_started_conversation: {
-//       type: Sequelize.BOOLEAN
-//       // allowNull defaults to true
-//     }
-//   },
-//   {
-//     // options
-//   }
-// );
-
-// const Counselor = sequelize.define(
-//   "counselors",
-//   {
-//     // attributes
-//     username: {
-//       type: Sequelize.STRING,
-//       allowNull: false
-//     },
-//     user_email: {
-//       type: Sequelize.STRING
-//       // allowNull defaults to true
-//     },
-//     has_replied_to_conversation: {
-//       type: Sequelize.BOOLEAN
-//       // allowNull defaults to true
-//     }
-//   },
-//   {
-//     // options
-//   }
-// );
-
-// const Conversation = sequelize.define(
-//   "conversations",
-//   {
-//     // attributes
-//     student_name: {
-//       type: Sequelize.STRING,
-//       allowNull: false
-//     },
-//     counselor_name: {
-//       type: Sequelize.STRING
-//       // allowNull defaults to true
-//     },
-//     is_open: {
-//       type: Sequelize.BOOLEAN
-//       // allowNull defaults to true
-//     }
-//   },
-//   {
-//     // options
-//   }
-// );
-
-//create a test student
-
-// Student.sync({ force: true }).then(function(thing) {
-//   console.log("We managed to sync Students");
-
-//   Student.create({
-//     username: "Michael",
-//     user_email: "Michael@here",
-//     has_started_conversation: false
-//   }).then(function(element) {
-//     console.log("Created a student");
-//   });
-// });
-
-//creating a test counselor
-
-// Counselor.sync({ force: true }).then(function(thing) {
-//   console.log("We managed to sync with Counselors");
-
-//   Counselor.create({
-//     username: "Juan",
-//     user_email: "Juan@here",
-//     has_replied_to_conversation: true
-//   }).then(function(element) {
-//     console.log("Created a counselor");
-//   });
-// });
-
-//creating a test conversation
-
-// Conversation.sync({ force: true }).then(function(thing) {
-//   console.log("We managed to sync with Conversations");
-
-//   Conversation.create({
-//     student_name: "Michael",
-//     counselor_name: "Juan",
-//     is_open: false
-//   }).then(function(element) {
-//     console.log("Created a conversation");
-//   });
-// });
-
-// module.exports = {
-//   Sequelize: Sequelize,
-//   sequelize: sequelize,
-//   Burger: Burger
-// };
+export default SequelizeDb;

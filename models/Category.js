@@ -8,48 +8,32 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_typescript_1 = require("sequelize-typescript");
-const Category_1 = require("./Category");
+const Counselor_1 = __importDefault(require("./Counselor"));
 const CounselorSkills_1 = require("./CounselorSkills");
 const Conversation_1 = require("./Conversation");
-//import {IBurger} from "./NewBurgerViewModel";
-let Counselor = class Counselor extends sequelize_typescript_1.Model {
+let Category = class Category extends sequelize_typescript_1.Model {
 };
 __decorate([
-    sequelize_typescript_1.Length({ min: 1, max: 45 }),
+    sequelize_typescript_1.Length({ min: 1, max: 100 }),
     sequelize_typescript_1.AllowNull(false),
     sequelize_typescript_1.Column,
     __metadata("design:type", String)
-], Counselor.prototype, "FirstName", void 0);
+], Category.prototype, "Name", void 0);
 __decorate([
-    sequelize_typescript_1.Length({ min: 1, max: 45 }),
-    sequelize_typescript_1.AllowNull(false),
-    sequelize_typescript_1.Column,
-    __metadata("design:type", String)
-], Counselor.prototype, "LastName", void 0);
-__decorate([
-    sequelize_typescript_1.AllowNull(false),
-    sequelize_typescript_1.Column,
-    __metadata("design:type", Date)
-], Counselor.prototype, "JoinDate", void 0);
-__decorate([
-    sequelize_typescript_1.AllowNull(false),
-    sequelize_typescript_1.IsEmail,
-    sequelize_typescript_1.Column,
-    __metadata("design:type", String)
-], Counselor.prototype, "Email", void 0);
-__decorate([
-    sequelize_typescript_1.BelongsToMany(() => Category_1.Category, () => CounselorSkills_1.CounselorSkill),
+    sequelize_typescript_1.BelongsToMany(() => Counselor_1.default, () => CounselorSkills_1.CounselorSkill),
     __metadata("design:type", Array)
-], Counselor.prototype, "categories", void 0);
+], Category.prototype, "counselors", void 0);
 __decorate([
     sequelize_typescript_1.HasMany(() => Conversation_1.Conversation),
     __metadata("design:type", Array)
-], Counselor.prototype, "Conversation", void 0);
-Counselor = __decorate([
+], Category.prototype, "Conversation", void 0);
+Category = __decorate([
     sequelize_typescript_1.Table
-], Counselor);
-exports.Counselor = Counselor;
-exports.default = Counselor;
-//# sourceMappingURL=Counselor.js.map
+], Category);
+exports.Category = Category;
+//# sourceMappingURL=Category.js.map
