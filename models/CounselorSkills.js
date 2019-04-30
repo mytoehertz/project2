@@ -8,36 +8,27 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_typescript_1 = require("sequelize-typescript");
-const Conversation_1 = require("./Conversation");
-//import {IBurger} from "./NewBurgerViewModel";
-let Student = class Student extends sequelize_typescript_1.Model {
+const Counselor_1 = __importDefault(require("./Counselor"));
+const Category_1 = require("./Category");
+let CounselorSkill = class CounselorSkill extends sequelize_typescript_1.Model {
 };
 __decorate([
-    sequelize_typescript_1.Length({ min: 1, max: 100 }),
-    sequelize_typescript_1.AllowNull(false),
+    sequelize_typescript_1.ForeignKey(() => Category_1.Category),
     sequelize_typescript_1.Column,
-    __metadata("design:type", String)
-], Student.prototype, "UserName", void 0);
+    __metadata("design:type", Number)
+], CounselorSkill.prototype, "Categories_id", void 0);
 __decorate([
-    sequelize_typescript_1.AllowNull(false),
+    sequelize_typescript_1.ForeignKey(() => Counselor_1.default),
     sequelize_typescript_1.Column,
-    __metadata("design:type", Date)
-], Student.prototype, "JoinDate", void 0);
-__decorate([
-    sequelize_typescript_1.AllowNull(false),
-    sequelize_typescript_1.IsEmail,
-    sequelize_typescript_1.Column,
-    __metadata("design:type", String)
-], Student.prototype, "Email", void 0);
-__decorate([
-    sequelize_typescript_1.HasMany(() => Conversation_1.Conversation),
-    __metadata("design:type", Array)
-], Student.prototype, "Conversation", void 0);
-Student = __decorate([
+    __metadata("design:type", Number)
+], CounselorSkill.prototype, "Counselor_id", void 0);
+CounselorSkill = __decorate([
     sequelize_typescript_1.Table
-], Student);
-exports.Student = Student;
-exports.default = Student;
-//# sourceMappingURL=student.js.map
+], CounselorSkill);
+exports.CounselorSkill = CounselorSkill;
+//# sourceMappingURL=CounselorSkills.js.map

@@ -9,32 +9,23 @@ import {
 
     Default,
     Sequelize,
-    IsEmail
+    IsEmail, BelongsToMany
 } from 'sequelize-typescript';
+import Counselor from "./Counselor";
+import {CounselorSkill} from "./CounselorSkills";
 import {Conversation} from "./Conversation";
 
-//import {IBurger} from "./NewBurgerViewModel";
-
-
 @Table
-export class Student extends Model<Student> {
+export class Category extends Model<Category> {
 
     @Length({min: 1, max: 100})
     @AllowNull(false)
     @Column
-    UserName: string;
+    Name: string;
 
-    @AllowNull(false)
-    @Column
-    JoinDate: Date;
-
-    @AllowNull(false)
-    @IsEmail
-    @Column
-    Email: string;
+    @BelongsToMany(() => Counselor, () => CounselorSkill)
+    counselors: Counselor[];
 
     @HasMany(() => Conversation)
     Conversation: Conversation[];
 }
-
-export default Student;
