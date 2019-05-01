@@ -18,12 +18,28 @@ export class SequelizeDb {
             database: 'fleshEaters',
             dialect: 'mysql',
             username: 'root',
-            password: 'root'
+            password: 'mishulin'
             //storage: ':memory:',
             //modelPaths: [__dirname + '/models']
         });
         this.Context.addModels([Student, Counselor, CounselorSkill, Category, Conversation, Message, MessageSender]);
         this.Context.sync();
+    }
+
+    async LoadMessageSenders() {
+        let messageSenders: Array<MessageSender>;
+
+        messageSenders = await MessageSender.findAll();
+
+        if (messageSenders.length == 0) {
+            var studentSender = new MessageSender();
+            studentSender.Message_Sender = "student";
+            await studentSender.save();
+            var counselorSender = new MessageSender();
+            counselorSender.Message_Sender = "counselor";
+            await counselorSender.save();
+        }
+
     }
 }
 

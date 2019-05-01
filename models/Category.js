@@ -8,12 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_typescript_1 = require("sequelize-typescript");
-const Counselor_1 = __importDefault(require("./Counselor"));
 const CounselorSkills_1 = require("./CounselorSkills");
 const Conversation_1 = require("./Conversation");
 let Category = class Category extends sequelize_typescript_1.Model {
@@ -25,9 +21,9 @@ __decorate([
     __metadata("design:type", String)
 ], Category.prototype, "Name", void 0);
 __decorate([
-    sequelize_typescript_1.BelongsToMany(() => Counselor_1.default, () => CounselorSkills_1.CounselorSkill),
+    sequelize_typescript_1.HasMany(() => CounselorSkills_1.CounselorSkill),
     __metadata("design:type", Array)
-], Category.prototype, "counselors", void 0);
+], Category.prototype, "CounselorSkill", void 0);
 __decorate([
     sequelize_typescript_1.HasMany(() => Conversation_1.Conversation),
     __metadata("design:type", Array)
