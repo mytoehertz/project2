@@ -14,14 +14,22 @@ const MessageSender_1 = require("../models/MessageSender");
 class SequelizeDb {
     constructor() {
         this.Context = new sequelize_typescript_1.Sequelize({
-            database: 'fleshEaters',
-            dialect: 'mysql',
-            username: 'root',
-            password: 'root'
+            database: "fleshEaters",
+            dialect: "mysql",
+            username: "root",
+            password: "Shmaavmc1"
             //storage: ':memory:',
             //modelPaths: [__dirname + '/models']
         });
-        this.Context.addModels([student_1.default, Counselor_1.default, CounselorSkills_1.CounselorSkill, Category_1.Category, Conversation_1.Conversation, Messages_1.Message, MessageSender_1.MessageSender]);
+        this.Context.addModels([
+            student_1.default,
+            Counselor_1.default,
+            CounselorSkills_1.CounselorSkill,
+            Category_1.Category,
+            Conversation_1.Conversation,
+            Messages_1.Message,
+            MessageSender_1.MessageSender
+        ]);
         this.Context.sync();
     }
 }
