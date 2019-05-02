@@ -15,10 +15,12 @@ const MessageSender_1 = require("../models/MessageSender");
 class SequelizeDb {
     constructor() {
         this.Context = new sequelize_typescript_1.Sequelize({
-            database: "fleshEaters",
-            dialect: "mysql",
-            username: "root",
-            password: "Shmaavmc1"
+
+            database: 'fleshEaters',
+            dialect: 'mysql',
+            username: 'root',
+            password: ''
+
             //storage: ':memory:',
             //modelPaths: [__dirname + '/models']
         });

@@ -11,6 +11,7 @@ import { MessageSender } from "../models/MessageSender";
 export class SequelizeDb {
   Context: Sequelize;
 
+
   constructor() {
     this.Context = new Sequelize({
       database: "fleshEaters",
@@ -32,6 +33,7 @@ export class SequelizeDb {
     ]);
     this.Context.sync();
   }
+
 }
 
 export default SequelizeDb;
