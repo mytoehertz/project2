@@ -13,14 +13,13 @@ import passport from "../config/passport";
 /* GET home page. */
 router.get("/", function(req, res, next) {
   console.log("Registering the get request");
-
-  res.render("signup", { title: "Express" });
+  res.sendFile(path.join(__dirname, "../public", "signup.html"));
 
   // if (randomNumber > 1) {
   //   ;
   // } else {
   //   res.render("index", { title: "Express" });
-  // res.sendFile(path.join(__dirname, "../public", "testform2.html"));
+
   //
   // }
 });
@@ -37,15 +36,22 @@ router.post("/signup", function(req, res, next) {
   console.log(user);
   user.save();
 
-  res.render("index", { user: user });
+  if (req.body.type == "student") {
+    res.render("index", { user: user });
+  } else {
+    res.render("counselorDashboard", { user: user });
+  }
 });
 
 router.post("/login", passport.authenticate("local"), function(req, res, next) {
   console.log("registering the login request");
   console.log(req.body);
 
-  //
-  res.render("index", { user: req.body });
+  if (req.body.type == "student") {
+    res.render("index", { user: req.body });
+  } else {
+    res.render("counselorDashboard", { user: req.body });
+  }
 });
 
 router.get("/logout", function(req, res) {

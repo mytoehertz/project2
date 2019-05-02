@@ -14,6 +14,7 @@ import {
 import { Category } from "./Category";
 import { CounselorSkill } from "./CounselorSkills";
 import { Conversation } from "./Conversation";
+import { type } from "os";
 
 //import {IBurger} from "./NewBurgerViewModel";
 
@@ -36,6 +37,10 @@ export class User extends Model<User> {
   @AllowNull(false)
   @Column
   password: string;
+
+  // @AllowNull(false)
+  // @Column
+  // type: string;
 
   // @BelongsToMany(() => Category, () => CounselorSkill)
   // categories: Category[];
