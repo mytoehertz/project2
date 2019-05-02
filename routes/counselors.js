@@ -5,35 +5,29 @@ router.get('/', function (req, res, next) {
     res.render('index', { title: 'Express' });
 });
 module.exports = router;
-
 //# sourceMappingURL=counselors.js.map
 
-// // index route
-// app.get('/pages', async (req, res) => {
+router.get('/', function (req, res) {
+    res.render('home');
+});
 
-// });
-// //get single page by ID
-// app.get('/pages/:id', async (req, res) => {
 
-// });
-// //create a new page
-// app.post('/pages', async (req, res) => {
+// index route
+router.get('/counselorlist', async (req, res) => {
+res.render('index');
+});
+//get single page by ID
+router.get('/counselorlist/:id', async (req, res) => {
 
-// });
-// //update a page by ID
-// app.put('/pages/:id', async (req, res) => {
+});
 
-// });
-// //Delete page by ID
-// app.delete('/pages/:id', async (req, res) => {
+//create
+router.get(`/new`, async (req, res) => {
+    res.render(`new`, { title: "New Post", action: `/sign-up`, method: "POST"});
+});
 
-// });
-
-// //  app.get(`/`, async (req, res) => {
-// //     console.log(req);
-
-// //     res.send('Hello World ');
-// //  });
-
-//  app.listen(PORT, () => console.log(`APP listening on port ${PORT}`));
-
+//create a new page
+router.post('/index', async (req, res) => {
+ console.log("POST -> /index", req.body);
+ res.redirect("/index");
+});

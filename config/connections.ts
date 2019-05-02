@@ -18,7 +18,7 @@ export class SequelizeDb {
             database: 'fleshEaters',
             dialect: 'mysql',
             username: 'root',
-            password: 'root'
+            password: ''
             //storage: ':memory:',
             //modelPaths: [__dirname + '/models']
         });
