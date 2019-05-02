@@ -1,6 +1,7 @@
 import { Sequelize } from "sequelize-typescript";
 import Student from "../models/student";
 import Counselor from "../models/Counselor";
+import User from "../models/users";
 import { CounselorSkill } from "../models/CounselorSkills";
 import { Category } from "../models/Category";
 import { Conversation } from "../models/Conversation";
@@ -22,6 +23,7 @@ export class SequelizeDb {
     this.Context.addModels([
       Student,
       Counselor,
+      User,
       CounselorSkill,
       Category,
       Conversation,

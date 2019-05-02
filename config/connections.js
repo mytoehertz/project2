@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_typescript_1 = require("sequelize-typescript");
 const student_1 = __importDefault(require("../models/student"));
 const Counselor_1 = __importDefault(require("../models/Counselor"));
+const users_1 = __importDefault(require("../models/users"));
 const CounselorSkills_1 = require("../models/CounselorSkills");
 const Category_1 = require("../models/Category");
 const Conversation_1 = require("../models/Conversation");
@@ -24,6 +25,7 @@ class SequelizeDb {
         this.Context.addModels([
             student_1.default,
             Counselor_1.default,
+            users_1.default,
             CounselorSkills_1.CounselorSkill,
             Category_1.Category,
             Conversation_1.Conversation,
