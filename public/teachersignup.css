@@ -1,0 +1,132 @@
+#logopic {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 450px; 
+}
+
+body{
+  background: white;
+  font-family: roboto;
+  user-select: none;
+}
+
+.container{
+
+  width: 500px;
+  margin: 30px auto;
+  height: 200px;
+  height: 300px;
+
+}
+a:link, a:visited {
+    background-color: whitesmoke;
+    color: rgb(12, 151, 197);
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+
+.login{
+    background-color: aqua;
+    width: 50%;
+    background: whitesmoke;
+    float: left;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+.signup{
+  width: 50%;
+  background: whitesmoke;
+  float: left;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.signup-form,
+.login-form{
+  background: whitesmoke;
+  padding: 40px;
+  clear: both;
+  width: 100%;
+  box-sizing: border-box;
+  height: 520px;
+}
+
+.input{
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  margin-bottom: 25px;
+  border: 2px solid #e9eaea;
+  color: #3e3e40;
+  font-size: 14px;
+  outline: none;
+  transform: all 0.5s ease;
+}
+
+.input:focus{
+  border: 2px solid #34b3a0;
+}
+
+.btn{
+  width: 20%;
+  background: #34b3a0;
+  height: 60px;
+  text-align: center;
+  line-height: 60px;
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+#signuppng {
+  position: relative;
+  width: 150px;
+  left: 100px;
+  bottom: 25px;
+  
+}
+
+#loginpng {
+  position: relative;
+  width: 150px;
+  left: 100px;
+  
+}
+
+span a{
+  text-decoration: none;
+  color: #000;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #3e3e40;
+  font-family: roboto;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #3e3e40;
+  font-family: roboto;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #3e3e40;
+  font-family: roboto;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #3e3e40;
+  font-family: roboto;
+}
+
+#teachersignup {
+    position: relative;
+    bottom: 30px;
+}

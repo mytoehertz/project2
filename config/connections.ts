@@ -1,11 +1,15 @@
 import { Sequelize } from "sequelize-typescript";
 import Student from "../models/student";
 import Counselor from "../models/Counselor";
+
+import User from "../models/users";
+
 import { CounselorSkill } from "../models/CounselorSkills";
 import { Category } from "../models/Category";
 import { Conversation } from "../models/Conversation";
 import { Message } from "../models/Messages";
 import { MessageSender } from "../models/MessageSender";
+
 
 export class SequelizeDb {
   Context: Sequelize;
@@ -30,6 +34,7 @@ export class SequelizeDb {
     ]);
     this.Context.sync();
   }
+
 }
 
 export default SequelizeDb;

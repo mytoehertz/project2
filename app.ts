@@ -10,13 +10,15 @@ var logger = require("morgan");
 var hbs = require("hbs");
 
 var indexRouter = require("./routes/index");
-//var usersRouter = require("./routes/users");
+var usersRouter = require("./routes/users");
 var studentRouter = require("./routes/students");
 var counselorRouter = require("./routes/counselors");
+var signupRouter = require("./routes/sign_up.js");
 var sequelize = new SequelizeDb();
 var app = express();
 
 // view engine setup
+var session = require("express-session");
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
 hbs.registerPartials(__dirname + "/views/partials");
@@ -28,10 +30,38 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+//passport middleware
+var passport = require("passport"),
+  LocalStrategy = require("passport-local").Strategy;
+app.use(session({ secret: "cats" }));
+app.use(passport.initialize());
+app.use(passport.session());
+
+//Routing info
+
 app.use("/", indexRouter);
-//app.use("/users", usersRouter);
+app.use("/users", usersRouter);
 app.use("/students", studentRouter);
 app.use("/counselors", counselorRouter);
+
+//passport config:
+
+// passport.use(
+//   new LocalStrategy(function(username, password, done) {
+//     User.findOne({ username: username }, function(err, user) {
+//       if (err) {
+//         return done(err);
+//       }
+//       if (!user) {
+//         return done(null, false, { message: "Incorrect username." });
+//       }
+//       if (!user.validPassword(password)) {
+//         return done(null, false, { message: "Incorrect password." });
+//       }
+//       return done(null, user);
+//     });
+//   })
+// );
 
 //SWAGGER
 //https://github.com/pgroot/express-swagger-generator
