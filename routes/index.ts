@@ -13,15 +13,14 @@ import passport from "../config/passport";
 /* GET home page. */
 router.get("/", function(req, res, next) {
   console.log("Registering the get request");
-  var randomNumber = Math.random() * 2;
 
-  console.log(randomNumber);
+  res.render("signup", { title: "Express" });
 
   // if (randomNumber > 1) {
-  //   res.render("signup", { title: "Express" });
+  //   ;
   // } else {
   //   res.render("index", { title: "Express" });
-  res.sendFile(path.join(__dirname, "../public", "testform2.html"));
+  // res.sendFile(path.join(__dirname, "../public", "testform2.html"));
   //
   // }
 });
@@ -38,26 +37,20 @@ router.post("/signup", function(req, res, next) {
   console.log(user);
   user.save();
 
-  //imported passport code
-
-  //
-
-  res.redirect("category.html");
+  res.render("index", { user: user });
 });
 
 router.post("/login", passport.authenticate("local"), function(req, res, next) {
   console.log("registering the login request");
-
-  // User.findOne({ where: { username: "Juan" } }).then(user => {
-  //   console.log(user);
-  //   // project will be the first entry of the Projects table with the title 'aProject' || null
-  // });
-
-  // Telling passport we want to use a Local Strategy. In other words,
-  //we want login with a username/email and password
+  console.log(req.body);
 
   //
-  res.redirect("category.html");
+  res.render("index", { user: req.body });
+});
+
+router.get("/logout", function(req, res) {
+  req.logout();
+  res.redirect("/");
 });
 
 module.exports = router;
