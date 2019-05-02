@@ -16,10 +16,10 @@ class SequelizeDb {
     constructor() {
         this.Context = new sequelize_typescript_1.Sequelize({
 
-            database: 'fleshEaters',
-            dialect: 'mysql',
-            username: 'root',
-            password: ''
+            database: "fleshEaters",
+            dialect: "mysql",
+            username: "root",
+            password: process.env.Database_Password
 
             //storage: ':memory:',
             //modelPaths: [__dirname + '/models']
@@ -27,7 +27,9 @@ class SequelizeDb {
         this.Context.addModels([
             student_1.default,
             Counselor_1.default,
+
             users_1.default,
+
             CounselorSkills_1.CounselorSkill,
             Category_1.Category,
             Conversation_1.Conversation,

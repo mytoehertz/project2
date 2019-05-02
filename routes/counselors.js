@@ -5,6 +5,7 @@ router.get('/', function (req, res, next) {
     res.render('index', { title: 'Express' });
 });
 module.exports = router;
+
 MappingURL=counselors.js.map
 
 router.get('/', function (req, res) {
@@ -31,4 +32,5 @@ router.post('/index', async (req, res) => {
  console.log("POST -> /index", req.body);
  res.redirect("/index");
 });
+
 
