@@ -20,7 +20,8 @@
     "sequelize": "^5.7.5",
     "sequelize-typescript": "^1.0.0-alpha.9",
     "swagger-ui-express": "^4.0.2",
-    "typescript": "^3.4.5"
+    "typescript": "^3.4.5",
+    "socket.io": "*"
   },
   "devDependencies": {
     "express-swagger-generator": "^1.1.14",
