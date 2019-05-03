@@ -26,7 +26,9 @@ class Services {
     }
     getCounselors(Categoryid) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield CounselorSkills_1.CounselorSkill.findAll().then(Counselor => { Counselor; });
+            return yield Counselor_1.default.findAll().then(counselor => {
+                counselor.categories.filter(c => c.id == Categoryid);
+            });
         });
     }
     //do we ever need to find a student???

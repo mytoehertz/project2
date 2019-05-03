@@ -11,11 +11,12 @@ import MessageSender from "../models/MessageSender";
 export class Services {
 
     async  getCategories():Promise<Array<Category>>{
-    return  await  Category.findAll();
-    }
+        return  await  Category.findAll();
+        }
 
     async  getCounselors(Categoryid: number):Promise<Array<Counselor>>{
-        return  await  CounselorSkill.findAll().then(Counselor=> {Counselor})
+        return  await  Counselor.findAll().then(counselor => {
+            counselor.categories.filter(c=>c.id==Categoryid)});
         }
 
         //do we ever need to find a student???
