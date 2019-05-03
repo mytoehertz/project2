@@ -10,18 +10,24 @@ import { Conversation } from "../models/Conversation";
 import { Message } from "../models/Messages";
 import { MessageSender } from "../models/MessageSender";
 
-
 export class SequelizeDb {
   Context: Sequelize;
 
   constructor() {
     this.Context = new Sequelize({
-      database: "fleshEaters",
+      database: "heroku_b4cf61c71350f3d",
+      host: "us-cdbr-iron-east-02.cleardb.net",
       dialect: "mysql",
-      username: "root",
+      username: "bdf87f6afc50bb",
       password: process.env.Database_Password
-      //storage: ':memory:',
+      // //storage: ':memory:',
       //modelPaths: [__dirname + '/models']
+
+      //     host     : 'us-cdbr-east-04.cleardb.com',
+      // user     : 'b6d6c6e874',
+      // password : 'b3f7###',
+      // database : 'heroku_1daa39da0'
+      // CLEAR DB URL: mysql://bdf87f6afc50bb:4759d7e2@us-cdbr-iron-east-02.cleardb.net/heroku_b4cf61c71350f3d?reconnect=true
     });
     this.Context.addModels([
       Student,
@@ -34,7 +40,6 @@ export class SequelizeDb {
     ]);
     this.Context.sync();
   }
-
 }
 
 export default SequelizeDb;
