@@ -42,10 +42,11 @@ class SequelizeDb {
     //}
     constructor() {
         this.Context = new sequelize_typescript_1.Sequelize({
-            database: "fleshEaters",
+            database: "heroku_b4cf61c71350f3d",
+            host: "us-cdbr-iron-east-02.cleardb.net",
             dialect: "mysql",
-            username: "root",
-            password: process.env.Database_Password
+            username: "bdf87f6afc50bb",
+            password: "4759d7e2"
             //storage: ':memory:',
             //modelPaths: [__dirname + '/models']
         });
