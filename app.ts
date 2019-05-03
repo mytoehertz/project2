@@ -13,8 +13,15 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var studentRouter = require("./routes/students");
 var counselorRouter = require("./routes/counselors");
+
+var categoryRouter = require("./routes/categories");
+var conversationRouter = require("./routes/conversations");
+var messageRouter = require("./routes/messages");
+
 var signupRouter = require("./routes/sign_up.js");
+
 var sequelize = new SequelizeDb();
+sequelize.LoadMessageSenders();
 var app = express();
 
 // view engine setup
@@ -43,6 +50,9 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/students", studentRouter);
 app.use("/counselors", counselorRouter);
+app.use("/categories", categoryRouter);
+app.use("/conversations", conversationRouter);
+app.use("/messages", messageRouter);
 
 //passport config:
 
@@ -66,38 +76,38 @@ app.use("/counselors", counselorRouter);
 //SWAGGER
 //https://github.com/pgroot/express-swagger-generator
 
-// const expressSwagger = require('express-swagger-generator')(app);
+const expressSwagger = require('express-swagger-generator')(app);
 
 //Currently breaking the app!
 
-// let options = {
-//     swaggerDefinition: {
-//         info: {
-//             description: 'This is a sample server',
-//             title: 'Swagger',
-//             version: '1.0.0',
-//         },
-//         host: 'localhost:3000',
-//         basePath: '/v1',
-//         produces: [
-//             "application/json",
-//             "application/xml"
-//         ],
-//         schemes: ['http', 'https'],
-//         securityDefinitions: {
-//             JWT: {
-//                 type: 'apiKey',
-//                 in: 'header',
-//                 name: 'Authorization',
-//                 description: "",
-//             }
-//         }
-//     },
-//     basedir: __dirname, //app absolute path
-//     files: ['./routes/**/*.js'] //Path to the API handle folder
-// };
+let options = {
+    swaggerDefinition: {
+        info: {
+            description: 'This is a sample server',
+            title: 'Swagger',
+            version: '1.0.0',
+        },
+        host: 'localhost:3000',
+        basePath: '/',
+        produces: [
+            "application/json",
+            "application/xml"
+        ],
+        schemes: ['http', 'https'],
+        securityDefinitions: {
+            JWT: {
+                type: 'apiKey',
+                in: 'header',
+                name: 'Authorization',
+                description: "",
+            }
+        }
+    },
+    basedir: __dirname, //app absolute path
+    files: ['./routes/**/*.js'] //Path to the API handle folder
+};
 
-// expressSwagger(options);
+expressSwagger(options);
 //
 
 // catch 404 and forward to error handler

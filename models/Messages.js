@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_typescript_1 = require("sequelize-typescript");
 const Conversation_1 = require("./Conversation");
+const messageSender_1 = require("./messageSender");
 let Message = class Message extends sequelize_typescript_1.Model {
 };
 __decorate([
@@ -25,9 +26,18 @@ __decorate([
     __metadata("design:type", Number)
 ], Message.prototype, "Conversation_id", void 0);
 __decorate([
+    sequelize_typescript_1.ForeignKey(() => messageSender_1.MessageSender),
+    sequelize_typescript_1.Column,
+    __metadata("design:type", Number)
+], Message.prototype, "MessageSender_id", void 0);
+__decorate([
     sequelize_typescript_1.BelongsTo(() => Conversation_1.Conversation),
     __metadata("design:type", Conversation_1.Conversation)
 ], Message.prototype, "Conversation", void 0);
+__decorate([
+    sequelize_typescript_1.BelongsTo(() => messageSender_1.MessageSender),
+    __metadata("design:type", messageSender_1.MessageSender)
+], Message.prototype, "MessageSender", void 0);
 Message = __decorate([
     sequelize_typescript_1.Table
 ], Message);

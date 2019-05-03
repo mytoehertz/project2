@@ -28,9 +28,10 @@ router.get('/', function (req, res, next) {
 
 
 /**
- * @typedef Student
- * @property {string} userName.required
- * @property {string} email.required
+ * @typedef Conversation
+ * @property {integer} categoryId.required
+ * @property {integer} counselorId.required
+ * @property {integer} studentId.required
  */
 
 /**
@@ -45,10 +46,10 @@ router.get('/', function (req, res, next) {
 /**
  * This function comment is parsed by doctrine
  * sdfkjsldfkj
- * @route POST /students/create
- * @group Students
- * @param {Student.model} student.body.required
- * @operationId createStudent
+ * @route POST /conversations/create
+ * @group Conversations
+ * @param {Conversation.model} conversation.body.required
+ * @operationId createConversation
  * @produces application/json application/xml
  * @consumes application/json application/xml
  * @headers {integer} 200.X-Rate-Limit - calls per hour allowed by the user
@@ -59,10 +60,10 @@ router.post('/create', async function (req, res, next) {
 
     try {
         let service = new Services();
-        let newlyCreatedStudent = await service.createStudent(req.body.userName, req.body.email);
+        let newlyCreatedConversation = await service.createConversation(Number(req.body.categoryId), Number(req.body.studentId), Number(req.body.counselorId));
 
         res.status(200)
-            .send(newlyCreatedStudent);
+            .send(newlyCreatedConversation);
     } catch (e) {
         res.status(500)
             .send(e);

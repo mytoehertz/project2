@@ -15,6 +15,7 @@ import Counselor from "./Counselor";
 import {CounselorSkill} from "./CounselorSkills";
 import {Conversation} from "./Conversation";
 
+
 @Table
 export class Category extends Model<Category> {
 
@@ -23,8 +24,11 @@ export class Category extends Model<Category> {
     @Column
     Name: string;
 
-    @BelongsToMany(() => Counselor, () => CounselorSkill)
-    counselors: Counselor[];
+    //   @BelongsToMany(() => Counselor, () => CounselorSkill)
+    //   counselors: Counselor[];
+
+    @HasMany(() => CounselorSkill)
+    CounselorSkill: CounselorSkill[];
 
     @HasMany(() => Conversation)
     Conversation: Conversation[];
