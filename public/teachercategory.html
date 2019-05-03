@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="teachercategory.css">
+    <title>MISSED</title>
+</head>
+<body>
+
+    <div>
+        <img src="logo.jpg" id="logopicture">
+    </div>
+
+        <div id="topNav" class="navigation">
+                <span id="closebtn" onclick="navToggle()">
+                    <span class="line1"></span>
+                    <span class="line2"></span>
+                    <span class="line3"></span>
+                </span>
+              <div class="logo">
+                <img src=""/>
+              </div>
+              
+              <ul class="menulist">
+                    <li><a class="menuitems" href="#prof">PROFILE</a></li>	
+                  <li><a class="menuitems" href="#friend-list">REQUEST</a></li>	
+                <li><a class="menuitems" href="#edit">EDIT MY PROFILE</a></li>					
+                <li><a class="menuitems" href="login.html">LOG OUT</a></li>
+
+              </ul>			
+              </div>
+              
+              <div id="main">
+              </div>
+
+
+
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+<div id="prof">
+        <div id="id">
+        <div class="bg-text">
+                <div class="card" id="prof">
+                        <img src="beyonce.jpg" alt="John" style="width:100%">
+                        <h1>Beyonce</h1>
+                        <p class="title">Counselor, Teacher</p>
+                        <p>New York University</p>
+                        <div style="margin: 24px 0;">
+                          <a href="#"><i class="fa fa-dribbble"></i></a> 
+                          <a href="#"><i class="fa fa-twitter"></i></a>  
+                          <a href="#"><i class="fa fa-linkedin"></i></a>  
+                          <a href="#"><i class="fa fa-facebook"></i></a> 
+                        </div>
+                        <p><button>Contact</button></p>
+                      </div>
+                </div>
+            </div>
+        </div>
+
+
+            <div id="note"><h1>NOTIFICATION</h1></div>
+            <div id="notification">
+            <div class="info-msg">
+                    <i class="fa fa-info-circle"></i>
+                    You have updated to the latest version.
+                  </div>
+                  
+                  <div class="success-msg">
+                    <i class="fa fa-check"></i>
+                    You have successfully finished counselling.
+                  </div>
+                  
+                  <div class="warning-msg">
+                    <i class="fa fa-warning"></i>
+                    You have reported by a student.
+                  </div>
+                  
+                  <div class="error-msg">
+                    <i class="fa fa-times-circle"></i>
+                    This is an error message.
+                  </div>
+                    </div>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div><h1><center>REQUESTED CHAT</center></h1></div>
+
+
+
+
+
+<ul id='friend-list'>
+        <li class='friend selected'>
+          <img src='jayz.jpg' />
+          <div class='name'>
+            Jay-Z
+          </div>
+        </li>
+        <li class='friend'>
+          <img src='eminem.jpg' />
+          <div class='name'>
+            Eminem
+          </div>
+        </li>
+        <li class='friend'>
+          <img src='propic.jpg' />
+          <div class='name'>
+           <a href="chatroom.html">Jay Choi</a>
+          </div>
+        </li>
+        <li class='friend'>
+          <img src='logo.jpg' />
+          <div class='name'>
+            hplaptopIsGood123
+          </div>
+        </li>
+        <li class='friend'>
+          <img src='logo.jpg' />
+          <div class='name'>
+            needHelp9898
+          </div>
+        </li>
+        <li class='friend'>
+          <img src='logo.jpg' />
+          <div class='name'>
+            Unknown123
+          </div>
+        </li>
+        <li class='friend'>
+                <img src='logo.jpg' />
+                <div class='name'>
+                  Unknown123
+                </div>
+              </li>
+              <li class='friend'>
+                    <img src='logo.jpg' />
+                    <div class='name'>
+                      Unknown123
+                    </div>
+                  </li>
+                  <li class='friend'>
+                        <img src='logo.jpg' />
+                        <div class='name'>
+                          Unknown123
+                        </div>
+                      </li>
+                      <li class='friend'>
+                            <img src='logo.jpg' />
+                            <div class='name'>
+                              Unknown123
+                            </div>
+                          </li>
+      </ul>
+
+
+
+
+
+
+<script>
+var nav = document.getElementById("topNav");
+var main = document.getElementById("main");
+var menu = document.getElementsByClassName("menuitems");
+var close = document.getElementById("closebtn");
+
+//default to measure if/else from
+nav.style.height = "50px";
+main.style.marginTop = "50px";
+for (i = 0; i < menu.length; i++){menu[i].style.marginTop="100px";};
+
+close.addEventListener("click", function(){
+  var menuIcon = close.children;
+  for (i = 0; i < menuIcon.length; i++){
+  menuIcon[i].classList.toggle("active");
+  }   
+});
+
+function navToggle() {	
+	//to close
+	if (nav.style.height <= "275px") {
+	nav.style.height = "50px";
+	main.style.marginTop = "50px";
+	
+    	var i = 0;
+    	for (i = 0; i < menu.length; i++){
+	menu[i].style.opacity="0.0";
+	menu[i].style.marginTop="100px";
+	};
+    	document.body.style.backgroundColor = "rgba(0,0,0,0.0)";
+	
+	} 
+	//to open
+	else if (nav.style.height <= "50px") {
+	nav.style.height = "275px";
+	main.style.marginTop = "275px";
+    	var i = 0;
+    	for (i = 0; i < menu.length; i++){
+	menu[i].style.opacity="1.0";
+	menu[i].style.marginTop="0px";
+	};
+    	document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+	
+	}
+
+};
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    document.getElementById("myBtn").style.display = "block";
+  } else {
+    document.getElementById("myBtn").style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+
+
+</script>
+</body>
+</html>
