@@ -56,4 +56,4 @@ Counselor = __decorate([
 ], Counselor);
 exports.Counselor = Counselor;
 exports.default = Counselor;
-//# sourceMappingURL=Counselor.js.map
+//# sourceMappingURL=counselor.js.map

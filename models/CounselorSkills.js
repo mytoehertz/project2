@@ -13,7 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_typescript_1 = require("sequelize-typescript");
-const Counselor_1 = __importDefault(require("./Counselor"));
+const counselor_1 = __importDefault(require("./counselor"));
 const Category_1 = require("./Category");
 let CounselorSkill = class CounselorSkill extends sequelize_typescript_1.Model {
 };
@@ -23,13 +23,13 @@ __decorate([
     __metadata("design:type", Number)
 ], CounselorSkill.prototype, "Categories_id", void 0);
 __decorate([
-    sequelize_typescript_1.ForeignKey(() => Counselor_1.default),
+    sequelize_typescript_1.ForeignKey(() => counselor_1.default),
     sequelize_typescript_1.Column,
     __metadata("design:type", Number)
 ], CounselorSkill.prototype, "Counselor_id", void 0);
 __decorate([
-    sequelize_typescript_1.BelongsTo(() => Counselor_1.default),
-    __metadata("design:type", Counselor_1.default)
+    sequelize_typescript_1.BelongsTo(() => counselor_1.default),
+    __metadata("design:type", counselor_1.default)
 ], CounselorSkill.prototype, "Counselor", void 0);
 __decorate([
     sequelize_typescript_1.BelongsTo(() => Category_1.Category),

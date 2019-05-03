@@ -1,6 +1,6 @@
 import { Sequelize } from "sequelize-typescript";
 import Student from "../models/student";
-import Counselor from "../models/Counselor";
+import Counselor from "../models/counselor";
 
 import User from "../models/users";
 
@@ -50,6 +50,7 @@ export class SequelizeDb {
       CounselorSkill,
       Category,
       Conversation,
+      User,
       Message,
       MessageSender
     ]);

@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_typescript_1 = require("sequelize-typescript");
 const Category_1 = require("./Category");
 const student_1 = __importDefault(require("./student"));
-const Counselor_1 = __importDefault(require("./Counselor"));
+const counselor_1 = __importDefault(require("./counselor"));
 const Messages_1 = require("./Messages");
 let Conversation = class Conversation extends sequelize_typescript_1.Model {
 };
@@ -25,7 +25,7 @@ __decorate([
     __metadata("design:type", Number)
 ], Conversation.prototype, "Student_id", void 0);
 __decorate([
-    sequelize_typescript_1.ForeignKey(() => Counselor_1.default),
+    sequelize_typescript_1.ForeignKey(() => counselor_1.default),
     sequelize_typescript_1.Column,
     __metadata("design:type", Number)
 ], Conversation.prototype, "Counselor_id", void 0);
@@ -43,8 +43,8 @@ __decorate([
     __metadata("design:type", student_1.default)
 ], Conversation.prototype, "Student", void 0);
 __decorate([
-    sequelize_typescript_1.BelongsTo(() => Counselor_1.default),
-    __metadata("design:type", Counselor_1.default)
+    sequelize_typescript_1.BelongsTo(() => counselor_1.default),
+    __metadata("design:type", counselor_1.default)
 ], Conversation.prototype, "Counselor", void 0);
 __decorate([
     sequelize_typescript_1.HasMany(() => Messages_1.Message),
