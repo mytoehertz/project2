@@ -13,51 +13,49 @@ import { MessageSender } from "../models/MessageSender";
 export class SequelizeDb {
   Context: Sequelize;
 
-//  constructor() {
+  //  constructor() {
   //  this.Context = new Sequelize({
-    //  database: "fleshEaters",
-    //  dialect: "mysql",
-    //  username: "root",
-     // password: "Shmaavmc1"
-      //storage: ':memory:',
-      //modelPaths: [__dirname + '/models']
-    //});
+  //  database: "fleshEaters",
+  //  dialect: "mysql",
+  //  username: "root",
+  // password: "Shmaavmc1"
+  //storage: ':memory:',
+  //modelPaths: [__dirname + '/models']
+  //});
   //  this.Context.addModels([
-   //   Student,
-   //   Counselor,
-    //  CounselorSkill,
-     // Category,
-      //Conversation,
-      //Message,
-      //MessageSender
-    //]);
-    //this.Context.sync();
+  //   Student,
+  //   Counselor,
+  //  CounselorSkill,
+  // Category,
+  //Conversation,
+  //Message,
+  //MessageSender
+  //]);
+  //this.Context.sync();
   //}
 
- 
+  constructor() {
+    this.Context = new Sequelize({
+      database: "fleshEaters",
+      dialect: "mysql",
+      username: "root",
+      password: process.env.Database_Password
+      //storage: ':memory:',
+      //modelPaths: [__dirname + '/models']
+    });
+    this.Context.addModels([
+      Student,
+      Counselor,
+      CounselorSkill,
+      Category,
+      Conversation,
+      Message,
+      MessageSender
+    ]);
+    this.Context.sync();
+  }
 
-   constructor() {
-     this.Context = new Sequelize({
-       database: "fleshEaters",
-       dialect: "mysql",
-       username: "root",
-       password: process.env.Database_Password
-       //storage: ':memory:',
-       //modelPaths: [__dirname + '/models']
-     });
-     this.Context.addModels([
-       Student,
-       Counselor,
-       CounselorSkill,
-       Category,
-       Conversation,
-       Message,
-       MessageSender
-     ]);
-     this.Context.sync();
-   }
-  
- async LoadMessageSenders() {
+  async LoadMessageSenders() {
     let messageSenders: Array<MessageSender>;
 
     messageSenders = await MessageSender.findAll();
@@ -72,6 +70,5 @@ export class SequelizeDb {
     }
   }
 }
- }
 
 export default SequelizeDb;
