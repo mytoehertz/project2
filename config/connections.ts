@@ -20,7 +20,7 @@ export class SequelizeDb {
             database: 'fleshEaters',
             dialect: 'mysql',
             username: 'root',
-            password: 'mishulin'
+            password: 'root'
             //storage: ':memory:',
             //modelPaths: [__dirname + '/models']
         });
@@ -45,28 +45,29 @@ export class SequelizeDb {
     }
 }
 
-  constructor() {
-    this.Context = new Sequelize({
-      database: "fleshEaters",
-      dialect: "mysql",
-      username: "root",
-      password: process.env.Database_Password
-      //storage: ':memory:',
-      //modelPaths: [__dirname + '/models']
-    });
-    this.Context.addModels([
-      Student,
-      Counselor,
-      CounselorSkill,
-      Category,
-      Conversation,
-      Message,
-      MessageSender
-    ]);
-    this.Context.sync();
-  }
+  // constructor() {
+  //   this.Context = new Sequelize({
+  //     database: "fleshEaters",
+  //     dialect: "mysql",
+  //     username: "root",
+  //     password: process.env.Database_Password
+  //     //storage: ':memory:',
+  //     //modelPaths: [__dirname + '/models']
+  //   });
+  //   this.Context.addModels([
+  //     Student,
+  //     Counselor,
+  //     CounselorSkill,
+  //     Category,
+  //     Conversation,
+  //     Message,
+  //     MessageSender
+  //   ]);
+  //   this.Context.sync();
+  // }
+
+  
 
 
-}
 
 export default SequelizeDb;

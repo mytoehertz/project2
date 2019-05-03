@@ -16,13 +16,10 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var studentRouter = require("./routes/students");
 var counselorRouter = require("./routes/counselors");
-
 var categoryRouter = require("./routes/categories");
 var conversationRouter = require("./routes/conversations");
 var messageRouter = require("./routes/messages");
-
 var signupRouter = require("./routes/sign_up.js");
-
 var sequelize = new connections_1.default();
 sequelize.LoadMessageSenders();
 var app = express();
@@ -47,11 +44,9 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/students", studentRouter);
 app.use("/counselors", counselorRouter);
-
 app.use("/categories", categoryRouter);
 app.use("/conversations", conversationRouter);
 app.use("/messages", messageRouter);
-
 //passport config:
 // passport.use(
 //   new LocalStrategy(function(username, password, done) {
@@ -69,7 +64,6 @@ app.use("/messages", messageRouter);
 //     });
 //   })
 // );
-
 //SWAGGER
 //https://github.com/pgroot/express-swagger-generator
 const expressSwagger = require('express-swagger-generator')(app);

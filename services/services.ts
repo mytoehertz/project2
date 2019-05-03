@@ -18,17 +18,29 @@ export class Services {
         return  await  CounselorSkill.findAll().then(Counselor=> {Counselor})
         }
 
-    async  getStudent():Promise<Array<Student>>{
-        return  await  Student.findOne();
-        }
+        //do we ever need to find a student???
+    // async  getStudent():Promise<Array<Student>>{
+    //     return  await  Student.findOne();
+    //     }
 
-    async getCounselorsByCategory(categoryId: number): Promise<Array<Counselor>> {
-        let category = await Category.findOne();
-
-        return category.counselors
-
+    async getCounselorsByCounselorSkill(categoryId: number): Promise<Array<Counselor>> {
+        let counselorSkill = await CounselorSkill.findOne({where: {Categories_id: categoryId}});
+        var counselor = await Counselor.findByPk(counselorSkill.Counselor_id);
+        return counselor;
     }
 
+        //get convo by category id????
+    async getConversationsByCategory(categoryId: number, counselorId:number): Promise<Array<Conversation>> {
+        let counselor= await this.getCounselor();
+        let counselorID=counselor.filter(c=>c.id==counselorId);
+        let conversations = await Conversations.findAll({where: {Categories_id: categoryId, Counselor_id:counselorID}});
+        return conversations
+    }
+
+    async getpastConversations(conversationid: number): Promise<Array<Conversation>> {
+        let conversation = await Conversation.findOne({where: {Conversation: conversationid}})
+        return conversation.body // what is the table item for the content of a convo????
+    }
 
     async getCounselorSender(): Promise<MessageSender> {
         return await MessageSender.findOne({where: {Message_Sender: 'counselor'}});
@@ -37,6 +49,8 @@ export class Services {
     async getStudentSender(): Promise<MessageSender> {
         return await MessageSender.findOne({where: {Message_Sender: 'student'}});
     }
+
+///////////////////////////////
 
     async createMessage(conversationId: number, messageSenderId: number, message: string): Promise<Message> {
         let newlyCreatedMessage = new Message();

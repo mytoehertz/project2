@@ -29,15 +29,30 @@ class Services {
             return yield CounselorSkills_1.CounselorSkill.findAll().then(Counselor => { Counselor; });
         });
     }
-    getStudent() {
+    //do we ever need to find a student???
+    // async  getStudent():Promise<Array<Student>>{
+    //     return  await  Student.findOne();
+    //     }
+    getCounselorsByCounselorSkill(categoryId) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield student_1.default.findOne();
+            let counselorSkill = yield CounselorSkills_1.CounselorSkill.findOne({ where: { Categories_id: categoryId } });
+            var counselor = yield Counselor_1.default.findByPk(counselorSkill.Counselor_id);
+            return counselor;
         });
     }
-    getCounselorsByCategory(categoryId) {
+    //get convo by category id????
+    getConversationsByCategory(categoryId, counselorId) {
         return __awaiter(this, void 0, void 0, function* () {
-            let category = yield Category_1.Category.findOne();
-            return category.counselors;
+            let counselor = yield this.getCounselor();
+            let counselorID = counselor.filter(c => c.id == counselorId);
+            let conversations = yield Conversations.findAll({ where: { Categories_id: categoryId, Counselor_id: counselorID } });
+            return conversations;
+        });
+    }
+    getpastConversations(conversationid) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let conversation = yield Conversation_1.Conversation.findOne({ where: { Conversation: conversationid } });
+            return conversation.body; // what is the table item for the content of a convo????
         });
     }
     getCounselorSender() {
@@ -50,6 +65,7 @@ class Services {
             return yield MessageSender_1.default.findOne({ where: { Message_Sender: 'student' } });
         });
     }
+    ///////////////////////////////
     createMessage(conversationId, messageSenderId, message) {
         return __awaiter(this, void 0, void 0, function* () {
             let newlyCreatedMessage = new Messages_1.Message();

@@ -16,37 +16,56 @@ var express = require('express');
 var router = express.Router();
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    res.render('index', { title: 'Express' });
+    try {
+        res.status(200)
+            .send({
+            message: 'success',
+            status: res.status,
+            resource: "YES!!!"
+        });
+    }
+    catch (e) {
+        res.status(500)
+            .send({
+            message: 'failed',
+            status: res.status,
+            resource: "Server Error"
+        });
+    }
 });
 /**
  * This function comment is parsed by doctrine
  * sdfkjsldfkj
- * @route GET /counselors/categories
- * @group Counselors
- * @param {integer} categoryid.query.required
- * @operationId getCounselor
+ * @route GET /messages/messageSenderTypes
+ * @group Messages
+ * @operationId getMessageSenderTypes
  * @produces application/json application/xml
  * @consumes application/json application/xml
  * @headers {integer} 200.X-Rate-Limit - calls per hour allowed by the user
  * @headers {string} 200.X-Expires-After -    date in UTC when token expires
  * @security JWT
  */
-router.get('/categories', function (req, res, next) {
+router.get('/messageSenderTypes', function (req, res, next) {
     return __awaiter(this, void 0, void 0, function* () {
-        let service = new services_1.default();
-        let counselor = yield service.getCounselorsByCounselorSkill(Number(req.query.categoryid));
-        res.render('index', { title: 'Express' });
-        res.status(200)
-            .send(counselor);
+        try {
+            let services = new services_1.default();
+            let senderTypes = new Array();
+            senderTypes.push(yield services.getStudentSender());
+            senderTypes.push(yield services.getCounselorSender());
+            res.status(200)
+                .send(senderTypes);
+        }
+        catch (e) {
+            res.status(500)
+                .send(e);
+        }
     });
 });
-//Test
 /**
- * @typedef Counselor
- * @property {string} firstName.required
- * @property {string} lastName.required
- * @property {string} email.required
- * @property {Array.<integer>} skills.required
+ * @typedef Message
+ * @property {integer} conversationId.required
+ * @property {integer} messageSenderId.required
+ * @property {string} message.required
  */
 /**
  * @typedef Error
@@ -59,10 +78,10 @@ router.get('/categories', function (req, res, next) {
 /**
  * This function comment is parsed by doctrine
  * sdfkjsldfkj
- * @route POST /counselors/create
- * @group Counselors
- * @param {Counselor.model} counselor.body.required
- * @operationId createCounselor
+ * @route POST /messages/create
+ * @group Messages
+ * @param {Message.model} message.body.required
+ * @operationId createMessage
  * @produces application/json application/xml
  * @consumes application/json application/xml
  * @headers {integer} 200.X-Rate-Limit - calls per hour allowed by the user
@@ -73,19 +92,15 @@ router.post('/create', function (req, res, next) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             let service = new services_1.default();
-            let firstName = req.body.firstName;
-            let lastName = req.body.lastName;
-            let email = req.body.email;
-            let skills = req.body.skills.map(s => Number(s));
-            let counselor = yield service.createCounselor(firstName, lastName, email, skills);
+            let newlyCreatedMessage = yield service.createMessage(Number(req.body.conversationId), Number(req.body.messageSenderId), req.body.message);
             res.status(200)
-                .send(counselor);
+                .send(newlyCreatedMessage);
         }
         catch (e) {
-            yield req.status(500)
+            res.status(500)
                 .send(e);
         }
     });
 });
 module.exports = router;
-//# sourceMappingURL=counselors.js.map
+//# sourceMappingURL=messages.js.map

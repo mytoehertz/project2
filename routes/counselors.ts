@@ -8,6 +8,26 @@ router.get('/', function (req, res, next) {
     res.render('index', {title: 'Express'});
 });
 
+/**
+ * This function comment is parsed by doctrine
+ * sdfkjsldfkj
+ * @route GET /counselors/categories
+ * @group Counselors
+ * @param {integer} categoryid.query.required
+ * @operationId getCounselor
+ * @produces application/json application/xml
+ * @consumes application/json application/xml
+ * @headers {integer} 200.X-Rate-Limit - calls per hour allowed by the user
+ * @headers {string} 200.X-Expires-After -    date in UTC when token expires
+ * @security JWT
+ */
+router.get('/categories',async function (req, res, next) {
+    let service = new Services();
+    let counselor = await service.getCounselorsByCounselorSkill(Number(req.query.categoryid));
+    res.render('index', {title: 'Express'});
+    res.status(200)
+    .send(counselor);
+});
 
 //Test
 
