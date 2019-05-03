@@ -19,7 +19,7 @@ const CounselorSkills_1 = require("../models/CounselorSkills");
 const Category_1 = require("../models/Category");
 const Conversation_1 = require("../models/Conversation");
 const Messages_1 = require("../models/Messages");
-const MessageSender_1 = require("../models/MessageSender");
+const messageSender_1 = require("../models/messageSender");
 class SequelizeDb {
     //  constructor() {
     //  this.Context = new Sequelize({
@@ -59,19 +59,19 @@ class SequelizeDb {
             Conversation_1.Conversation,
             users_1.default,
             Messages_1.Message,
-            MessageSender_1.MessageSender
+            messageSender_1.MessageSender
         ]);
         this.Context.sync();
     }
     LoadMessageSenders() {
         return __awaiter(this, void 0, void 0, function* () {
             let messageSenders;
-            messageSenders = yield MessageSender_1.MessageSender.findAll();
+            messageSenders = yield messageSender_1.MessageSender.findAll();
             if (messageSenders.length == 0) {
-                var studentSender = new MessageSender_1.MessageSender();
+                var studentSender = new messageSender_1.MessageSender();
                 studentSender.Message_Sender = "student";
                 yield studentSender.save();
-                var counselorSender = new MessageSender_1.MessageSender();
+                var counselorSender = new messageSender_1.MessageSender();
                 counselorSender.Message_Sender = "counselor";
                 yield counselorSender.save();
             }

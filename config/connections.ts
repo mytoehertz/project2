@@ -8,7 +8,7 @@ import { CounselorSkill } from "../models/CounselorSkills";
 import { Category } from "../models/Category";
 import { Conversation } from "../models/Conversation";
 import { Message } from "../models/Messages";
-import { MessageSender } from "../models/MessageSender";
+import { MessageSender } from "../models/messageSender";
 
 export class SequelizeDb {
   Context: Sequelize;
