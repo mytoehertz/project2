@@ -12,12 +12,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const Category_1 = require("../models/Category");
-const Counselor_1 = __importDefault(require("../models/Counselor"));
+const counselor_1 = __importDefault(require("../models/counselor"));
 const student_1 = __importDefault(require("../models/student"));
 const CounselorSkills_1 = require("../models/CounselorSkills");
 const Conversation_1 = require("../models/Conversation");
 const Messages_1 = require("../models/Messages");
-const MessageSender_1 = __importDefault(require("../models/MessageSender"));
+const messageSender_1 = __importDefault(require("../models/messageSender"));
 class Services {
     getCategories() {
         return __awaiter(this, void 0, void 0, function* () {
@@ -26,7 +26,9 @@ class Services {
     }
     getCounselors(Categoryid) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield CounselorSkills_1.CounselorSkill.findAll().then(Counselor => { Counselor; });
+            return yield CounselorSkills_1.CounselorSkill.findAll().then(Counselor => {
+                Counselor;
+            });
         });
     }
     getStudent() {
@@ -42,12 +44,16 @@ class Services {
     }
     getCounselorSender() {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield MessageSender_1.default.findOne({ where: { Message_Sender: 'counselor' } });
+            return yield messageSender_1.default.findOne({
+                where: { Message_Sender: "counselor" }
+            });
         });
     }
     getStudentSender() {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield MessageSender_1.default.findOne({ where: { Message_Sender: 'student' } });
+            return yield messageSender_1.default.findOne({
+                where: { Message_Sender: "student" }
+            });
         });
     }
     createMessage(conversationId, messageSenderId, message) {
@@ -79,7 +85,7 @@ class Services {
     }
     createCounselor(firstName, lastName, email, skillCategories) {
         return __awaiter(this, void 0, void 0, function* () {
-            let counselor = new Counselor_1.default();
+            let counselor = new counselor_1.default();
             counselor.FirstName = firstName;
             counselor.LastName = lastName;
             counselor.Email = email;
@@ -103,8 +109,7 @@ class Services {
     createCounselorSkills(counselorId, categorySkills) {
         return __awaiter(this, void 0, void 0, function* () {
             let skills;
-            skills = categorySkills
-                .map(s => {
+            skills = categorySkills.map(s => {
                 let cs = new CounselorSkills_1.CounselorSkill();
                 cs.Counselor_id = counselorId;
                 cs.Categories_id = s;
@@ -117,7 +122,7 @@ class Services {
     }
     getCounselor() {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield Counselor_1.default.findOne();
+            return yield counselor_1.default.findOne();
         });
     }
     createCategory(categoryName) {
