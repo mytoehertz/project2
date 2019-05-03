@@ -14,7 +14,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_typescript_1 = require("sequelize-typescript");
 const student_1 = __importDefault(require("../models/student"));
 const Counselor_1 = __importDefault(require("../models/Counselor"));
-const users_1 = __importDefault(require("../models/users"));
 const CounselorSkills_1 = require("../models/CounselorSkills");
 const Category_1 = require("../models/Category");
 const Conversation_1 = require("../models/Conversation");
@@ -23,28 +22,16 @@ const MessageSender_1 = require("../models/MessageSender");
 class SequelizeDb {
     constructor() {
         this.Context = new sequelize_typescript_1.Sequelize({
-
-            database: 'fleshEaters',
-            dialect: 'mysql',
-            username: 'root',
-            password: 'mishulin'
-
-
             database: "fleshEaters",
             dialect: "mysql",
             username: "root",
-            password: process.env.Database_Password
-
-
+            password: "Shmaavmc1"
             //storage: ':memory:',
             //modelPaths: [__dirname + '/models']
         });
         this.Context.addModels([
             student_1.default,
             Counselor_1.default,
-
-            users_1.default,
-
             CounselorSkills_1.CounselorSkill,
             Category_1.Category,
             Conversation_1.Conversation,
@@ -69,5 +56,26 @@ class SequelizeDb {
     }
 }
 exports.SequelizeDb = SequelizeDb;
+//   constructor() {
+//     this.Context = new Sequelize({
+//       database: "fleshEaters",
+//       dialect: "mysql",
+//       username: "root",
+//       password: process.env.Database_Password
+//       //storage: ':memory:',
+//       //modelPaths: [__dirname + '/models']
+//     });
+//     this.Context.addModels([
+//       Student,
+//       Counselor,
+//       CounselorSkill,
+//       Category,
+//       Conversation,
+//       Message,
+//       MessageSender
+//     ]);
+//     this.Context.sync();
+//   }
+// }
 exports.default = SequelizeDb;
 //# sourceMappingURL=connections.js.map
