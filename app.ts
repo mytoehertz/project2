@@ -76,39 +76,39 @@ app.use("/messages", messageRouter);
 //SWAGGER
 //https://github.com/pgroot/express-swagger-generator
 
-const expressSwagger = require('express-swagger-generator')(app);
+// const expressSwagger = require('express-swagger-generator')(app);
 
-//Currently breaking the app!
+// //Currently breaking the app!
 
-let options = {
-    swaggerDefinition: {
-        info: {
-            description: 'This is a sample server',
-            title: 'Swagger',
-            version: '1.0.0',
-        },
-        host: 'localhost:3000',
-        basePath: '/',
-        produces: [
-            "application/json",
-            "application/xml"
-        ],
-        schemes: ['http', 'https'],
-        securityDefinitions: {
-            JWT: {
-                type: 'apiKey',
-                in: 'header',
-                name: 'Authorization',
-                description: "",
-            }
-        }
-    },
-    basedir: __dirname, //app absolute path
-    files: ['./routes/**/*.js'] //Path to the API handle folder
-};
+// let options = {
+//     swaggerDefinition: {
+//         info: {
+//             description: 'This is a sample server',
+//             title: 'Swagger',
+//             version: '1.0.0',
+//         },
+//         host: 'localhost:3000',
+//         basePath: '/',
+//         produces: [
+//             "application/json",
+//             "application/xml"
+//         ],
+//         schemes: ['http', 'https'],
+//         securityDefinitions: {
+//             JWT: {
+//                 type: 'apiKey',
+//                 in: 'header',
+//                 name: 'Authorization',
+//                 description: "",
+//             }
+//         }
+//     },
+//     basedir: __dirname, //app absolute path
+//     files: ['./routes/**/*.js'] //Path to the API handle folder
+// };
 
-expressSwagger(options);
-//
+// expressSwagger(options);
+// //
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
