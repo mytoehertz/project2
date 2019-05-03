@@ -35,34 +35,37 @@ router.get('/', function (req, res, next) {
 });
 /**
  * This function comment is parsed by doctrine
- * @route GET /categories/all
- * @group Categories
- * @returns {object} 200 - An array of categories
- * @returns {Error}  default - Unexpected error
+ * sdfkjsldfkj
+ * @route GET /messages/messageSenderTypes
+ * @group Messages
+ * @operationId getMessageSenderTypes
+ * @produces application/json application/xml
+ * @consumes application/json application/xml
+ * @headers {integer} 200.X-Rate-Limit - calls per hour allowed by the user
+ * @headers {string} 200.X-Expires-After -    date in UTC when token expires
+ * @security JWT
  */
-router.get('/all', function (req, res, next) {
+router.get('/messageSenderTypes', function (req, res, next) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            var service = new services_1.default();
-            var categories = yield service.getCategories();
+            let services = new services_1.default();
+            let senderTypes = new Array();
+            senderTypes.push(yield services.getStudentSender());
+            senderTypes.push(yield services.getCounselorSender());
             res.status(200)
-                .send({
-                categories
-            });
+                .send(senderTypes);
         }
         catch (e) {
             res.status(500)
-                .send({
-                message: 'failed',
-                status: res.status,
-                resource: e
-            });
+                .send(e);
         }
     });
 });
 /**
- * @typedef Category
- * @property {string} name.required
+ * @typedef Message
+ * @property {integer} conversationId.required
+ * @property {integer} messageSenderId.required
+ * @property {string} message.required
  */
 /**
  * @typedef Error
@@ -75,10 +78,10 @@ router.get('/all', function (req, res, next) {
 /**
  * This function comment is parsed by doctrine
  * sdfkjsldfkj
- * @route POST /categories/create
- * @group Categories
- * @param {Category.model} category.body.required
- * @operationId createCategory
+ * @route POST /messages/create
+ * @group Messages
+ * @param {Message.model} message.body.required
+ * @operationId createMessage
  * @produces application/json application/xml
  * @consumes application/json application/xml
  * @headers {integer} 200.X-Rate-Limit - calls per hour allowed by the user
@@ -88,21 +91,16 @@ router.get('/all', function (req, res, next) {
 router.post('/create', function (req, res, next) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            var service = new services_1.default();
-            console.log(req.body);
-            var createdCategory = yield service.createCategory(req.body.name);
+            let service = new services_1.default();
+            let newlyCreatedMessage = yield service.createMessage(Number(req.body.conversationId), Number(req.body.messageSenderId), req.body.message);
             res.status(200)
-                .send(createdCategory);
+                .send(newlyCreatedMessage);
         }
         catch (e) {
             res.status(500)
-                .send({
-                message: 'failed',
-                exception: e,
-                bdy: req.body
-            });
+                .send(e);
         }
     });
 });
 module.exports = router;
-//# sourceMappingURL=categories.js.map
+//# sourceMappingURL=messages.js.map

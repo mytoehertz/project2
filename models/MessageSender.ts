@@ -20,4 +20,9 @@ export class MessageSender extends Model<MessageSender> {
     @Column
     Message_Sender: string;
 
+    @HasMany(() => Message, 'MessageSender_id')
+    Message: Message[];
+
 }
+
+export default MessageSender;

@@ -10,22 +10,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_typescript_1 = require("sequelize-typescript");
-const Messages_1 = require("./Messages");
-let MessageSender = class MessageSender extends sequelize_typescript_1.Model {
+//import {IBurger} from "./NewBurgerViewModel";
+let User = class User extends sequelize_typescript_1.Model {
 };
 __decorate([
-    sequelize_typescript_1.Length({ min: 1, max: 45 }),
     sequelize_typescript_1.AllowNull(false),
     sequelize_typescript_1.Column,
     __metadata("design:type", String)
-], MessageSender.prototype, "Message_Sender", void 0);
+], User.prototype, "username", void 0);
 __decorate([
-    sequelize_typescript_1.HasMany(() => Messages_1.Message, 'MessageSender_id'),
-    __metadata("design:type", Array)
-], MessageSender.prototype, "Message", void 0);
-MessageSender = __decorate([
+    sequelize_typescript_1.AllowNull(false),
+    sequelize_typescript_1.Column,
+    __metadata("design:type", String)
+], User.prototype, "password", void 0);
+User = __decorate([
     sequelize_typescript_1.Table
-], MessageSender);
-exports.MessageSender = MessageSender;
-exports.default = MessageSender;
-//# sourceMappingURL=messageSender.js.map
+], User);
+exports.User = User;
+exports.default = User;
+// function User(username, password) {
+//   (this.username = username), (this.password = password);
+// }
+// module.exports = {
+//   User: User
+// };
+//# sourceMappingURL=users.js.map

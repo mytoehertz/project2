@@ -9,7 +9,7 @@ import {
 
     Default,
     Sequelize,
-    IsEmail
+    IsEmail, BelongsTo, PrimaryKey, AutoIncrement
 } from 'sequelize-typescript';
 import Counselor from "./Counselor";
 import {Category} from "./Category";
@@ -18,13 +18,19 @@ import {Category} from "./Category";
 @Table
 export class CounselorSkill extends Model<CounselorSkill> {
 
+
     @ForeignKey(() => Category)
     @Column
     Categories_id: number;
 
     @ForeignKey(() => Counselor)
     @Column
-    Counselor_id: number
+    Counselor_id: number;
 
+    @BelongsTo(() => Counselor)
+    Counselor: Counselor;
+
+    @BelongsTo(() => Category)
+    Category: Category;
 
 }

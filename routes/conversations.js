@@ -34,35 +34,10 @@ router.get('/', function (req, res, next) {
     }
 });
 /**
- * This function comment is parsed by doctrine
- * @route GET /categories/all
- * @group Categories
- * @returns {object} 200 - An array of categories
- * @returns {Error}  default - Unexpected error
- */
-router.get('/all', function (req, res, next) {
-    return __awaiter(this, void 0, void 0, function* () {
-        try {
-            var service = new services_1.default();
-            var categories = yield service.getCategories();
-            res.status(200)
-                .send({
-                categories
-            });
-        }
-        catch (e) {
-            res.status(500)
-                .send({
-                message: 'failed',
-                status: res.status,
-                resource: e
-            });
-        }
-    });
-});
-/**
- * @typedef Category
- * @property {string} name.required
+ * @typedef Conversation
+ * @property {integer} categoryId.required
+ * @property {integer} counselorId.required
+ * @property {integer} studentId.required
  */
 /**
  * @typedef Error
@@ -75,10 +50,10 @@ router.get('/all', function (req, res, next) {
 /**
  * This function comment is parsed by doctrine
  * sdfkjsldfkj
- * @route POST /categories/create
- * @group Categories
- * @param {Category.model} category.body.required
- * @operationId createCategory
+ * @route POST /conversations/create
+ * @group Conversations
+ * @param {Conversation.model} conversation.body.required
+ * @operationId createConversation
  * @produces application/json application/xml
  * @consumes application/json application/xml
  * @headers {integer} 200.X-Rate-Limit - calls per hour allowed by the user
@@ -88,21 +63,16 @@ router.get('/all', function (req, res, next) {
 router.post('/create', function (req, res, next) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            var service = new services_1.default();
-            console.log(req.body);
-            var createdCategory = yield service.createCategory(req.body.name);
+            let service = new services_1.default();
+            let newlyCreatedConversation = yield service.createConversation(Number(req.body.categoryId), Number(req.body.studentId), Number(req.body.counselorId));
             res.status(200)
-                .send(createdCategory);
+                .send(newlyCreatedConversation);
         }
         catch (e) {
             res.status(500)
-                .send({
-                message: 'failed',
-                exception: e,
-                bdy: req.body
-            });
+                .send(e);
         }
     });
 });
 module.exports = router;
-//# sourceMappingURL=categories.js.map
+//# sourceMappingURL=conversations.js.map

@@ -28,9 +28,15 @@ export class Message extends Model<Message> {
     @Column
     Conversation_id: number;
 
+    @ForeignKey(() => MessageSender)
+    @Column
+    MessageSender_id: number;
 
     @BelongsTo(()=> Conversation)
     Conversation: Conversation;
+
+    @BelongsTo(() => MessageSender)
+    MessageSender: MessageSender;
 
 
 
