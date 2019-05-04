@@ -27,6 +27,14 @@ __decorate([
     sequelize_typescript_1.Column,
     __metadata("design:type", Number)
 ], CounselorSkill.prototype, "Counselor_id", void 0);
+__decorate([
+    sequelize_typescript_1.BelongsTo(() => Counselor_1.default),
+    __metadata("design:type", Counselor_1.default)
+], CounselorSkill.prototype, "Counselor", void 0);
+__decorate([
+    sequelize_typescript_1.BelongsTo(() => Category_1.Category),
+    __metadata("design:type", Category_1.Category)
+], CounselorSkill.prototype, "Category", void 0);
 CounselorSkill = __decorate([
     sequelize_typescript_1.Table
 ], CounselorSkill);

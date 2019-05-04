@@ -9,7 +9,7 @@ import {
 
     Default,
     Sequelize,
-    IsEmail, BelongsToMany
+    IsEmail, BelongsToMany, Scopes
 } from 'sequelize-typescript';
 import {Category} from "./Category";
 import {CounselorSkill} from "./CounselorSkills";
@@ -17,7 +17,11 @@ import {Conversation} from "./Conversation";
 
 //import {IBurger} from "./NewBurgerViewModel";
 
-
+@Scopes({
+    full: {
+        include: [() => CounselorSkill]
+    }
+})
 @Table
 export class Counselor extends Model<Counselor> {
 
@@ -41,8 +45,11 @@ export class Counselor extends Model<Counselor> {
     @Column
     Email: string;
 
-    @BelongsToMany(() => Category, () => CounselorSkill)
-    categories: Category[];
+    //@BelongsToMany(() => Category, () => CounselorSkill)
+    // categories: Category[];
+
+    @HasMany(() => CounselorSkill)
+    CounselorSkill: CounselorSkill[];
 
     @HasMany(() => Conversation)
     Conversation: Conversation[];

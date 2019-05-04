@@ -16,8 +16,12 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var studentRouter = require("./routes/students");
 var counselorRouter = require("./routes/counselors");
+var categoryRouter = require("./routes/categories");
+var conversationRouter = require("./routes/conversations");
+var messageRouter = require("./routes/messages");
 var signupRouter = require("./routes/sign_up.js");
 var sequelize = new connections_1.default();
+sequelize.LoadMessageSenders();
 var app = express();
 // view engine setup
 var session = require("express-session");
@@ -40,6 +44,9 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/students", studentRouter);
 app.use("/counselors", counselorRouter);
+app.use("/categories", categoryRouter);
+app.use("/conversations", conversationRouter);
+app.use("/messages", messageRouter);
 //passport config:
 // passport.use(
 //   new LocalStrategy(function(username, password, done) {
@@ -59,35 +66,35 @@ app.use("/counselors", counselorRouter);
 // );
 //SWAGGER
 //https://github.com/pgroot/express-swagger-generator
-// const expressSwagger = require('express-swagger-generator')(app);
+const expressSwagger = require('express-swagger-generator')(app);
 //Currently breaking the app!
-// let options = {
-//     swaggerDefinition: {
-//         info: {
-//             description: 'This is a sample server',
-//             title: 'Swagger',
-//             version: '1.0.0',
-//         },
-//         host: 'localhost:3000',
-//         basePath: '/v1',
-//         produces: [
-//             "application/json",
-//             "application/xml"
-//         ],
-//         schemes: ['http', 'https'],
-//         securityDefinitions: {
-//             JWT: {
-//                 type: 'apiKey',
-//                 in: 'header',
-//                 name: 'Authorization',
-//                 description: "",
-//             }
-//         }
-//     },
-//     basedir: __dirname, //app absolute path
-//     files: ['./routes/**/*.js'] //Path to the API handle folder
-// };
-// expressSwagger(options);
+let options = {
+    swaggerDefinition: {
+        info: {
+            description: 'This is a sample server',
+            title: 'Swagger',
+            version: '1.0.0',
+        },
+        host: 'localhost:3000',
+        basePath: '/',
+        produces: [
+            "application/json",
+            "application/xml"
+        ],
+        schemes: ['http', 'https'],
+        securityDefinitions: {
+            JWT: {
+                type: 'apiKey',
+                in: 'header',
+                name: 'Authorization',
+                description: "",
+            }
+        }
+    },
+    basedir: __dirname,
+    files: ['./routes/**/*.js'] //Path to the API handle folder
+};
+expressSwagger(options);
 //
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

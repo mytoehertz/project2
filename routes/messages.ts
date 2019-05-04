@@ -1,5 +1,5 @@
-import {Category} from "../models/Category";
 import Services from "../services/services";
+import MessageSender from "../models/MessageSender";
 
 var express = require('express');
 var router = express.Router();
@@ -30,35 +30,38 @@ router.get('/', function (req, res, next) {
 
 /**
  * This function comment is parsed by doctrine
- * @route GET /categories/all
- * @group Categories
- * @returns {object} 200 - An array of categories
- * @returns {Error}  default - Unexpected error
+ * sdfkjsldfkj
+ * @route GET /messages/messageSenderTypes
+ * @group Messages
+ * @operationId getMessageSenderTypes
+ * @produces application/json application/xml
+ * @consumes application/json application/xml
+ * @headers {integer} 200.X-Rate-Limit - calls per hour allowed by the user
+ * @headers {string} 200.X-Expires-After -    date in UTC when token expires
+ * @security JWT
  */
-router.get('/all', async function (req, res, next) {
-
+router.get('/messageSenderTypes', async function (req, res, next) {
     try {
-        var service = new Services();
-        var categories = await service.getCategories();
+        let services = new Services();
+
+        let senderTypes: Array<MessageSender> = new Array<MessageSender>();
+        senderTypes.push(await services.getStudentSender());
+        senderTypes.push(await services.getCounselorSender());
+
+
         res.status(200)
-            .send({
-                categories
-            });
+            .send(senderTypes);
     } catch (e) {
         res.status(500)
-            .send({
-                message: 'failed',
-                status: res.status,
-                resource: e
-
-            });
+            .send(e);
     }
-
 });
 
 /**
- * @typedef Category
- * @property {string} name.required
+ * @typedef Message
+ * @property {integer} conversationId.required
+ * @property {integer} messageSenderId.required
+ * @property {string} message.required
  */
 
 /**
@@ -73,10 +76,10 @@ router.get('/all', async function (req, res, next) {
 /**
  * This function comment is parsed by doctrine
  * sdfkjsldfkj
- * @route POST /categories/create
- * @group Categories
- * @param {Category.model} category.body.required
- * @operationId createCategory
+ * @route POST /messages/create
+ * @group Messages
+ * @param {Message.model} message.body.required
+ * @operationId createMessage
  * @produces application/json application/xml
  * @consumes application/json application/xml
  * @headers {integer} 200.X-Rate-Limit - calls per hour allowed by the user
@@ -86,22 +89,16 @@ router.get('/all', async function (req, res, next) {
 router.post('/create', async function (req, res, next) {
 
     try {
-        var service = new Services();
-
-        console.log(req.body);
-
-        var createdCategory = await service.createCategory(req.body.name);
+        let service = new Services();
+        let newlyCreatedMessage = await service.createMessage(Number(req.body.conversationId), Number(req.body.messageSenderId), req.body.message);
 
         res.status(200)
-            .send(createdCategory);
+            .send(newlyCreatedMessage);
     } catch (e) {
         res.status(500)
-            .send({
-                message: 'failed',
-                exception: e,
-                bdy: req.body
-            })
+            .send(e);
     }
+
 });
 
 module.exports = router;

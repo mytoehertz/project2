@@ -13,6 +13,7 @@ import { MessageSender } from "../models/MessageSender";
 export class SequelizeDb {
   Context: Sequelize;
 
+
   constructor() {
     this.Context = new Sequelize({
       database: "heroku_b4cf61c71350f3d",
@@ -39,7 +40,9 @@ export class SequelizeDb {
       MessageSender
     ]);
     this.Context.sync();
+
   }
 }
+ }
 
 export default SequelizeDb;
