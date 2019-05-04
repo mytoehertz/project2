@@ -1,0 +1,354 @@
+
+html {
+    scroll-behavior: smooth;
+    align-content: center;
+  }
+  
+
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300,700,900);
+
+
+#logopicture {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    width: 50%;
+
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    transition: background-color .5s;
+}
+
+.navigation {
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #000040;
+    box-shadow: 0 4px 4px -3px #232323;
+    -moz-box-shadow: 0 4px 4px -3px #232323;
+    -webkit-box-shadow: 0 4px 4px -3px #232323;
+    overflow: hidden;
+    transition: all 0.4s ease-in-out;
+    padding-top: 0px;
+}
+
+.navigation a {
+    text-decoration: none;
+}
+
+.navigation ul {
+    margin-top:20px;
+    text-align:center;
+    list-style:none; 
+    margin-left:auto;
+    margin-right:auto;
+}
+
+
+.menulist {
+    width:600px;
+}
+
+
+.logo {
+    text-align:center;
+    margin:0 auto;
+}
+
+.line1, .line2, .line3 {
+  margin-top:5px;
+  background-color:#fff;
+  width:25px;
+  height:3px;
+  display:block;
+  position:relative;
+  opacity:1.0;
+  border-radius:15%;
+  transition: all .3s;
+}
+
+.line1.active {
+  transform: rotate(270deg);
+  opacity:0.0;
+  background-color:yellow;
+  top:5px;
+}
+
+.line2.active {
+  transform: rotate(45deg);
+  background-color:yellow;
+}
+
+.line3.active {
+  transform: rotate(-45deg);
+  background-color:yellow;
+  top:-7px;
+}
+
+.menuitems {
+    padding-top:12px;
+    padding-bottom:12px;
+    text-decoration: none;
+    list-style:none; 
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+    font-size: 24px;
+    display: inline-block;
+    position:relative;	
+    text-align:center;
+    color: #fff;
+    opacity:0.0;
+    transition: all .5s ease-in-out;
+}
+
+.menuitems:after {
+  content:'';
+  display:block;
+  width: 0;
+  height: 1px;
+  background: #fff;
+  transition: width .2s;
+}
+
+.menuitems:hover::after {
+    width:100%;
+}
+
+#closebtn {
+    height:25px;
+    width:25px;	
+    position: absolute;
+    text-decoration:none;
+    top: 10px;
+    left: 25px;
+    font-size: 36px !important;
+    margin-right: 50px;
+    z-index:100;
+    color:#fff;
+    cursor:pointer;
+    trainsition:background-position .3s;
+}
+
+#main {	
+    transition: margin-top .4s;
+    text-align:center;
+    margin:auto;
+    padding: 16px;
+    font-size:30px;
+}
+
+
+
+
+
+
+
+#id {
+position: relative;
+border-radius: 12px;
+display: block;
+margin-left: auto;
+margin-right: auto;
+
+}
+
+
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+  }
+  
+  .title {
+    color: navy;
+    font-size: 18px;
+  }
+  
+  button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+  
+  a {
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+  }
+  
+  button:hover, a:hover {
+    opacity: 0.7;
+  }
+
+  @media only screen and (max-width:800px) {
+    /* For tablets: */
+    .main {
+      width: 80%;
+      padding: 0;
+    }
+    .right {
+      width: 100%;
+    }
+  }
+  @media only screen and (max-width:500px) {
+    /* For mobile phones: */
+    .menu, .main, .right {
+      width: 100%;
+    }
+  }
+
+
+  @import url('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css');
+
+.info-msg,
+.success-msg,
+.warning-msg,
+.error-msg {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 3px 3px 3px 3px;
+}
+.info-msg {
+  color: #059;
+  background-color: #BEF;
+  height: 30px;
+}
+.success-msg {
+  color: #270;
+  background-color: #DFF2BF;
+  height: 30px;
+}
+.warning-msg {
+  color: #9F6000;
+  background-color: #FEEFB3;
+  height: 30px;
+}
+.error-msg {
+  color: #D8000C;
+  background-color: #FFBABA;
+  height: 30px;
+}
+
+
+
+
+
+
+#notification {
+    position: relative;
+    width: 50%;
+  
+    bottom: -50px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+#overflowTest {
+    position: relative;
+    background: whitesmoke;
+    color: white;
+    padding: 15px;
+    width: 50%;
+    right: 300px;
+    height: 200px;
+    overflow: scroll;
+    border: 1px solid #ccc;
+    left: 150px;
+  }
+  #notepic {
+      position: relative;
+      width: 30px;
+  }
+
+  #note {
+      position: relative;
+      font-family: Arial, Helvetica, sans-serif;
+    text-align: center; 
+    bottom: -20px; 
+
+  }
+
+
+
+
+
+
+
+
+  html, body {
+    font-family: sans-serif;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  }
+  
+  #friend-list { 
+    position: relative;
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 60%;
+    height: 80%;
+    background: #EEE;
+    list-style-type: none;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+  }
+  
+  .friend {
+    width: 100%;
+    height: 70px;
+    background: #EEE;
+    border-bottom: 1px solid #DDD;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+  
+  .friend img {
+    width: 45px;
+    height: 45px;
+    border-radius: 30px;
+    border: 2px solid #AAA;
+    object-fit: cover;
+    margin-left: 5px;
+    margin-right: 10px;
+  }
+  
+  .friend .name {
+    font-size: 18px;
+  }
+  
+
+  
+  .friend.selected img {
+    border-color: white;
+  }
+  
+  .friend:not(.selected):hover {
+    background: #DDD;
+  }
